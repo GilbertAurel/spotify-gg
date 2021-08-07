@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import NavbarMusicPlayer from 'components/navbar-music-player';
+import NavbarMusicPlayer from 'components/home-music-player';
 import React from 'react';
 
 interface Props {
