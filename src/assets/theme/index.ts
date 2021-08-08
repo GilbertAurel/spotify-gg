@@ -9,6 +9,7 @@ export const COLORS = {
   lightgray: '#FAFAFA',
   white: '#FFFFFF',
 
+  frostedWhite: 'rgba(191, 191, 191, 0.6)',
   placeholder: '#5BA3B3'
 };
 
