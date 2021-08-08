@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import React from 'react';
+import { Banner } from 'assets/images';
 
 const HomeCarousel: React.FC = () => {
   const styles = {
@@ -22,7 +23,7 @@ const HomeCarousel: React.FC = () => {
 
   return (
     <div css={styles.container}>
-      <img css={styles.image} src="https://picsum.photos/200" alt="headline" />
+      <img css={styles.image} src={Banner} alt="headline" />
     </div>
   );
 };
