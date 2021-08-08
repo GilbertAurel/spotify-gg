@@ -27,13 +27,21 @@ const Profile: React.FC = () => {
     name: css`
       margin: 0;
       padding: 0;
+      max-width: 25ch;
       color: ${COLORS.primary};
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       ${FONTS.h2}
     `,
     email: css`
       margin: 0;
       padding: 0;
+      max-width: 25ch;
       color: ${COLORS.darkblue};
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       ${FONTS.p}
     `
   };
