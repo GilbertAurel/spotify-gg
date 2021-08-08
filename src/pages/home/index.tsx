@@ -11,6 +11,7 @@ import {
   setNewReleases
 } from 'store/action-creators';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Layout from 'layout/PageWithMusicPlayer';
 import HomeCarousel from 'components/home-carousel';
@@ -21,6 +22,7 @@ import EditorPicksWidget from 'components/home-editor-picks';
 import SideMenu from 'components/side-menu';
 
 const HomePage: React.FC = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -35,11 +37,16 @@ const HomePage: React.FC = () => {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).then((res) => {
-        const { display_name: name, id, images, uri, email } = res.data;
-        const user = { name, id, images, uri, email };
-        dispatch(setLoginData(user, token, expires));
-      });
+      })
+        .then((res) => {
+          const { display_name: name, id, images, uri, email } = res.data;
+          const user = { name, id, images, uri, email };
+          dispatch(setLoginData(user, token, expires));
+        })
+        .catch(() => {
+          window.localStorage.clear();
+          history.go(0);
+        });
 
       axios({
         method: 'GET',
