@@ -7,6 +7,14 @@ export interface User {
   uri: string;
 }
 
+export interface Track {
+  name: string;
+  images: any[];
+  artist: string;
+  uri: string;
+  duration?: string;
+}
+
 interface LoginAction {
   type: ActionTypes.LOGIN_AUTH;
   payload: {
@@ -16,4 +24,9 @@ interface LoginAction {
   };
 }
 
-export type Actions = LoginAction;
+interface NewReleases {
+  type: ActionTypes.SET_NEW_RELEASES;
+  payload: Track[];
+}
+
+export type Actions = LoginAction | NewReleases;

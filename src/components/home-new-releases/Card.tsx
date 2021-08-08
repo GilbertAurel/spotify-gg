@@ -3,12 +3,14 @@
 import React from 'react';
 import { css, jsx } from '@emotion/react';
 import { COLORS, FONTS } from 'assets/theme';
+import { Track } from 'store/actions';
 
-const SongCard: React.FC = () => {
-  const dummyData = {
-    title: 'Track Title',
-    artist: 'Artist'
-  };
+interface Props {
+  track: Track;
+}
+
+const SongCard: React.FC<Props> = ({ track }) => {
+  const { artist, name, images } = track;
 
   const styles = {
     container: css`
@@ -35,22 +37,29 @@ const SongCard: React.FC = () => {
     title: css`
       margin: 0;
       padding: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       color: ${COLORS.primary};
       ${FONTS.p}
     `,
     artist: css`
       margin: 0;
       padding: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       color: ${COLORS.darkblue};
       ${FONTS.p}
     `
   };
+
   return (
     <div css={styles.container}>
-      <img css={styles.image} src="https://picsum.photos/200" alt="album" />
+      <img css={styles.image} src={images[2].url} alt="album" />
       <section>
-        <p css={styles.title}>{dummyData.title}</p>
-        <p css={styles.artist}>{dummyData.artist}</p>
+        <p css={styles.title}>{name}</p>
+        <p css={styles.artist}>{artist}</p>
       </section>
     </div>
   );

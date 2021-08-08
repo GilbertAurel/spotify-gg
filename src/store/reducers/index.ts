@@ -1,8 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import playlistReducer from './playlist';
 import userReducer from './user';
 
 export const reducers = combineReducers({
-  user: userReducer
+  user: userReducer,
+  playlist: playlistReducer
 });
 
 export default reducers;

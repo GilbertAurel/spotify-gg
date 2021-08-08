@@ -1,6 +1,6 @@
 import { ActionTypes } from 'store/action-types';
 import { Dispatch } from 'redux';
-import { Actions, User } from 'store/actions';
+import { Actions, Track, User } from 'store/actions';
 
 type DispatchType = Dispatch<Actions>;
 
@@ -11,3 +11,10 @@ export const setLoginData =
       payload: { token, expires, user }
     });
   };
+
+export const setNewReleases = (tracks: Track[]) => (dispatch: DispatchType) => {
+  dispatch({
+    type: ActionTypes.SET_NEW_RELEASES,
+    payload: tracks
+  });
+};

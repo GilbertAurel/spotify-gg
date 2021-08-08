@@ -7,10 +7,10 @@ import Layout from 'layout/PageWithMusicPlayer';
 import SearchBar from 'components/search-bar';
 import EditorPicks from 'components/home-editor-picks';
 import axios from 'axios';
-import { USER_DATA_URL } from 'utils/apis/endpoints';
-import { setLoginData } from 'store/action-creators';
+import { NEW_RELEASES_URL, USER_DATA_URL } from 'utils/apis/endpoints';
+import { setLoginData, setNewReleases } from 'store/action-creators';
 import { useDispatch } from 'react-redux';
-import { User } from 'store/actions';
+import { Track, User } from 'store/actions';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,6 +30,26 @@ const HomePage: React.FC = () => {
         const { display_name: name, id, images, uri } = res.data;
         const user: User = { name, id, images, uri };
         dispatch(setLoginData(user, token, expires));
+      });
+
+      axios({
+        method: 'GET',
+        url: NEW_RELEASES_URL,
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+          limit: 10
+        }
+      }).then((res) => {
+        const newRelases: Track[] = res.data.albums.items.map((item: any) => ({
+          artist: item.artists[0].name,
+          images: item.images,
+          name: item.name,
+          uri: item.uri
+        }));
+
+        dispatch(setNewReleases(newRelases));
       });
     }
   }, []);
