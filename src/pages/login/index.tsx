@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { hashSeparator } from 'utils/helpers/hashSeparator';
 import { LOGIN_URL } from 'utils/apis/endpoints';
 
-const Home: React.FC = () => {
+const LoginPage: React.FC = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default LoginPage;
