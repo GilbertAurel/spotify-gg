@@ -22,6 +22,13 @@ export interface EditorPicks {
   trackUrl: string;
 }
 
+export interface Playlists {
+  name: string;
+  image: any[];
+  id: string;
+  description: string;
+}
+
 interface LoginAction {
   type: ActionTypes.LOGIN_AUTH;
   payload: {
@@ -41,4 +48,13 @@ interface EditorPicksAction {
   payload: EditorPicks[];
 }
 
-export type Actions = LoginAction | NewReleasesAction | EditorPicksAction;
+interface PlaylistsAction {
+  type: ActionTypes.SET_PLAYLIST;
+  payload: Playlists[];
+}
+
+export type Actions =
+  | LoginAction
+  | NewReleasesAction
+  | EditorPicksAction
+  | PlaylistsAction;

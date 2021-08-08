@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
     );
   }
 
-  return <div>test</div>;
+  return <div>loading..</div>;
 };
 
 export default HomePage;

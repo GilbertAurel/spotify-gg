@@ -1,7 +1,4 @@
 export const DEV_URL = encodeURIComponent('http://localhost:3000');
-export const DEPLOYMENT_URL = encodeURIComponent(
-  'https://gfe01103-spotify.netlify.app'
-);
 
 const scope = [
   'user-read-currently-playing',
@@ -24,3 +21,5 @@ export const NEW_RELEASES_URL =
 
 export const EDITOR_PICKS_URL =
   'https://api.spotify.com/v1/browse/featured-playlists';
+
+export const PLAYLIST_URL = 'https://api.spotify.com/v1/me/playlists';

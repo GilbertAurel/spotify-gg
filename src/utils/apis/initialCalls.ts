@@ -3,12 +3,14 @@ import axios from 'axios';
 import {
   EDITOR_PICKS_URL,
   NEW_RELEASES_URL,
+  PLAYLIST_URL,
   USER_DATA_URL
 } from 'utils/apis/endpoints';
 import {
   setEditorPicks,
   setLoginData,
-  setNewReleases
+  setNewReleases,
+  setPlaylists
 } from 'store/action-creators';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -47,14 +49,14 @@ export const initialFetch = () => {
         limit: 20
       }
     }).then((res) => {
-      const newRelases = res.data.albums.items.map((item: any) => ({
+      const data = res.data.albums.items.map((item: any) => ({
         artist: item.artists[0].name,
         images: item.images,
         name: item.name,
         uri: item.uri
       }));
 
-      dispatch(setNewReleases(newRelases));
+      dispatch(setNewReleases(data));
     });
 
   const fetchEditorPicks = (token: string) =>
@@ -68,13 +70,31 @@ export const initialFetch = () => {
         limit: 10
       }
     }).then((res) => {
-      const albums = res.data.playlists.items.map((item: any) => ({
+      const data = res.data.playlists.items.map((item: any) => ({
         name: item.name,
         images: item.images,
         trackUrl: item.tracks.href
       }));
 
-      dispatch(setEditorPicks(albums));
+      dispatch(setEditorPicks(data));
+    });
+
+  const fetchPlaylist = (token: string) =>
+    axios({
+      method: 'GET',
+      url: PLAYLIST_URL,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((res) => {
+      const data = res.data.items.map((item: any) => ({
+        name: item.name,
+        image: item.images,
+        id: item.id,
+        description: item.description
+      }));
+
+      dispatch(setPlaylists(data));
     });
 
   useEffect(() => {
@@ -85,7 +105,8 @@ export const initialFetch = () => {
       Promise.all([
         fetchUserData(token, expires),
         fetchNewReleases(token),
-        fetchEditorPicks(token)
+        fetchEditorPicks(token),
+        fetchPlaylist(token)
       ]).then(() => setLoaded(true));
     }
   }, []);
