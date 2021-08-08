@@ -29,7 +29,7 @@ export const FONTS = {
     font-family: 'Noto Sans', sans-serif;
   `,
   p: css`
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-family: 'Noto Sans', sans-serif;
   `
 };

@@ -46,7 +46,7 @@ export const initialFetch = () => {
         Authorization: `Bearer ${token}`
       },
       params: {
-        limit: 20
+        limit: 5
       }
     }).then((res) => {
       const data = res.data.albums.items.map((item: any) => ({
@@ -67,7 +67,7 @@ export const initialFetch = () => {
         Authorization: `Bearer ${token}`
       },
       params: {
-        limit: 10
+        limit: 5
       }
     }).then((res) => {
       const data = res.data.playlists.items.map((item: any) => ({

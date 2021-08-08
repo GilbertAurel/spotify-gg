@@ -51,7 +51,7 @@ const SideMenu: React.FC<Props> = ({ toggleMenu }) => {
     `,
     innerContainer: css`
       height: 100%;
-      width: 60%;
+      width: 65%;
       min-width: 15rem;
       max-width: 25rem;
       padding: 2rem 1.5rem;

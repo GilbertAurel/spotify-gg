@@ -15,7 +15,7 @@ const SongCard: React.FC<Props> = ({ track }) => {
   const styles = {
     container: css`
       min-width: 7rem;
-      height: 9.5rem;
+      height: 10rem;
       padding: 0.625rem;
       display: flex;
       flex-direction: column;
