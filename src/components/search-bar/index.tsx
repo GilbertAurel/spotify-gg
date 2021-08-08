@@ -24,8 +24,8 @@ const SearchBar: React.FC = () => {
       transform: translateX(-50%);
     `,
     searchIcon: {
-      height: '1.5rem',
-      width: '1.5rem',
+      height: '24px',
+      width: '24px',
       fill: COLORS.placeholder
     },
     searchInput: css`
