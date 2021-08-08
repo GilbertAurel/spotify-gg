@@ -9,5 +9,9 @@ export const PAGES: IRoutes[] = [
   {
     path: '/home',
     component: lazy(() => import('pages/home'))
+  },
+  {
+    path: '/playlist',
+    component: lazy(() => import('pages/playlist'))
   }
 ];

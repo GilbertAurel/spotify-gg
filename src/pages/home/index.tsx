@@ -1,18 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import {
-  EDITOR_PICKS_URL,
-  NEW_RELEASES_URL,
-  USER_DATA_URL
-} from 'utils/apis/endpoints';
-import {
-  setEditorPicks,
-  setLoginData,
-  setNewReleases
-} from 'store/action-creators';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
+import React, { useState } from 'react';
 import Layout from 'layout/PageWithMusicPlayer';
 import HomeCarousel from 'components/home-carousel';
 import HomeHeader from 'components/home-header';
@@ -20,87 +6,28 @@ import SearchBar from 'components/search-bar';
 import NewReleasesWidget from 'components/home-new-releases';
 import EditorPicksWidget from 'components/home-editor-picks';
 import SideMenu from 'components/side-menu';
+import { initialFetch } from 'utils/apis/initialCalls';
 
 const HomePage: React.FC = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const { loaded } = initialFetch();
   const [toggleMenu, setToggleMenu] = useState(false);
-
-  useEffect(() => {
-    const token = window.localStorage.getItem('token');
-    const expires = window.localStorage.getItem('expires');
-
-    if (token && expires) {
-      axios({
-        method: 'GET',
-        url: USER_DATA_URL,
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-        .then((res) => {
-          const { display_name: name, id, images, uri, email } = res.data;
-          const user = { name, id, images, uri, email };
-          dispatch(setLoginData(user, token, expires));
-        })
-        .catch(() => {
-          window.localStorage.clear();
-          history.go(0);
-        });
-
-      axios({
-        method: 'GET',
-        url: NEW_RELEASES_URL,
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        params: {
-          limit: 20
-        }
-      }).then((res) => {
-        const newRelases = res.data.albums.items.map((item: any) => ({
-          artist: item.artists[0].name,
-          images: item.images,
-          name: item.name,
-          uri: item.uri
-        }));
-
-        dispatch(setNewReleases(newRelases));
-      });
-
-      axios({
-        method: 'GET',
-        url: EDITOR_PICKS_URL,
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        params: {
-          limit: 10
-        }
-      }).then((res) => {
-        const albums = res.data.playlists.items.map((item: any) => ({
-          name: item.name,
-          images: item.images,
-          trackUrl: item.tracks.href
-        }));
-
-        dispatch(setEditorPicks(albums));
-      });
-    }
-  }, []);
 
   const toggleMenuHandler = () => setToggleMenu(!toggleMenu);
 
-  return (
-    <Layout>
-      <HomeHeader toggleMenu={toggleMenuHandler} />
-      <SearchBar />
-      <HomeCarousel />
-      <NewReleasesWidget />
-      <EditorPicksWidget />
-      {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
-    </Layout>
-  );
+  if (loaded) {
+    return (
+      <Layout>
+        <HomeHeader toggleMenu={toggleMenuHandler} />
+        <SearchBar />
+        <HomeCarousel />
+        <NewReleasesWidget />
+        <EditorPicksWidget />
+        {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
+      </Layout>
+    );
+  }
+
+  return <div>test</div>;
 };
 
 export default HomePage;
