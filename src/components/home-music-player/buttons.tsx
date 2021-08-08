@@ -13,18 +13,18 @@ const PlayerButtons: React.FC = () => {
       gap: 1rem;
     `,
     rewindIcon: {
-      height: '1.5rem',
-      width: '1.5rem',
+      height: '24px',
+      width: '24px',
       fill: COLORS.darkblue
     },
     playIcon: {
-      height: '1.5rem',
-      width: '1.5rem',
+      height: '24px',
+      width: '24px',
       fill: COLORS.primary
     },
     forwardIcon: {
-      height: '1.5rem',
-      width: '1.5rem',
+      height: '24px',
+      width: '24px',
       fill: COLORS.darkblue
     }
   };
