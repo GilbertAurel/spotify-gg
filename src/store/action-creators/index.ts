@@ -1,6 +1,6 @@
 import { ActionTypes } from 'store/action-types';
 import { Dispatch } from 'redux';
-import { Actions, Track, User } from 'store/actions';
+import { Actions, EditorPicks, Track, User } from 'store/actions';
 
 type DispatchType = Dispatch<Actions>;
 
@@ -18,3 +18,11 @@ export const setNewReleases = (tracks: Track[]) => (dispatch: DispatchType) => {
     payload: tracks
   });
 };
+
+export const setEditorPicks =
+  (albums: EditorPicks[]) => (dispatch: DispatchType) => {
+    dispatch({
+      type: ActionTypes.SET_EDITOR_PICKS,
+      payload: albums
+    });
+  };

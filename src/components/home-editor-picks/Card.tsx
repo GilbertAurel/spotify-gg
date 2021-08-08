@@ -2,8 +2,15 @@
 /** @jsx jsx */
 import React from 'react';
 import { css, jsx } from '@emotion/react';
+import { EditorPicks } from 'store/actions';
 
-const AlbumCard: React.FC = () => {
+interface Props {
+  album: EditorPicks;
+}
+
+const AlbumCard: React.FC<Props> = ({ album }) => {
+  const { images } = album;
+
   const styles = {
     image: css`
       max-height: 9.4rem;
@@ -13,7 +20,7 @@ const AlbumCard: React.FC = () => {
     `
   };
 
-  return <img css={styles.image} src="https://picsum.photos/200" alt="album" />;
+  return <img css={styles.image} src={images[0].url} alt="album" />;
 };
 
 export default AlbumCard;

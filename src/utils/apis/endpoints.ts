@@ -19,3 +19,6 @@ export const USER_DATA_URL = 'https://api.spotify.com/v1/me';
 
 export const NEW_RELEASES_URL =
   'https://api.spotify.com/v1/browse/new-releases';
+
+export const EDITOR_PICKS_URL =
+  'https://api.spotify.com/v1/browse/featured-playlists';

@@ -15,6 +15,12 @@ export interface Track {
   duration?: string;
 }
 
+export interface EditorPicks {
+  name: string;
+  images: any[];
+  trackUrl: string;
+}
+
 interface LoginAction {
   type: ActionTypes.LOGIN_AUTH;
   payload: {
@@ -24,9 +30,14 @@ interface LoginAction {
   };
 }
 
-interface NewReleases {
+interface NewReleasesAction {
   type: ActionTypes.SET_NEW_RELEASES;
   payload: Track[];
 }
 
-export type Actions = LoginAction | NewReleases;
+interface EditorPicksAction {
+  type: ActionTypes.SET_EDITOR_PICKS;
+  payload: EditorPicks[];
+}
+
+export type Actions = LoginAction | NewReleasesAction | EditorPicksAction;
