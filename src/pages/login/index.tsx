@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { login } from 'store/action-creators';
-import { hashSeparator } from 'utils/hashSeparator';
-import { LOGIN_URL } from 'utils/spotifyEndpoints';
+import { hashSeparator } from 'utils/helpers/hashSeparator';
+import { LOGIN_URL } from 'utils/apis/endpoints';
 
 const Home: React.FC = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
     if (window.location.hash) {
       const { access_token: token, expires_in: expires } = hashSeparator();
       window.localStorage.setItem('token', token);
-      dispatch(login('test', token, expires));
+      window.localStorage.setItem('expires', expires);
       history.push('/home');
     }
   }, []);

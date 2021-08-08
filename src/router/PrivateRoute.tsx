@@ -1,11 +1,7 @@
 import React from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 
-type Props = {
-  component: React.FC;
-} & RouteProps;
-
-const PrivateRoute = ({ component, ...routerProps }: Props) => {
+const PrivateRoute = ({ component, ...routerProps }: RouteProps) => {
   const token = window.localStorage.getItem('token');
 
   if (token) {

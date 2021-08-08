@@ -1,10 +1,10 @@
 export function hashSeparator() {
   const hash = window.location.hash;
-  const hashFragment = hash.substring(1);
-  const params = hashFragment.split('&');
+  const hashFragment = hash?.substring(1);
+  const params = hashFragment?.split('&');
   const keyValueParams: any = {};
 
-  params.forEach((param) => {
+  params?.forEach((param) => {
     const values = param.split('=');
     const name = values[0];
     const value = values[1];
