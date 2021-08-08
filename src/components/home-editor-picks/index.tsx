@@ -5,21 +5,21 @@ import React from 'react';
 import WidgetLayout from 'layout/HomeWidgetWithTitle';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
+import { EditorPicks } from 'store/actions';
 import AlbumCard from './Card';
 
 const title = "Editor's Picks";
 
-const EditorPicks: React.FC = () => {
-  const { editorPicks } = useSelector((state: RootState) => state.playlist);
-  const items = [...editorPicks];
+const EditorPicksWidget: React.FC = () => {
+  const items = useSelector((state: RootState) => state.playlist.editorPicks);
 
   return (
     <WidgetLayout title={title}>
-      {items.map((item) => (
-        <AlbumCard album={item} />
+      {items.map((item: EditorPicks) => (
+        <AlbumCard key={item.name} album={item} />
       ))}
     </WidgetLayout>
   );
 };
 
-export default EditorPicks;
+export default EditorPicksWidget;

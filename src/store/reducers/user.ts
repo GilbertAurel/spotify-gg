@@ -1,10 +1,22 @@
 import { ActionTypes } from 'store/action-types';
-import { Actions } from 'store/actions';
+import { Actions, User } from 'store/actions';
 
-const initialState = {
+type State = {
+  token: string;
+  expires: string;
+  user: User;
+};
+
+const initialState: State = {
   token: '',
   expires: '',
-  user: {}
+  user: {
+    name: '',
+    id: '',
+    images: [],
+    uri: '',
+    email: ''
+  }
 };
 
 const userReducer = (state = initialState, action: Actions) => {

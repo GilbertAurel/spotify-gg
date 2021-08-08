@@ -56,7 +56,7 @@ const SongCard: React.FC<Props> = ({ track }) => {
 
   return (
     <div css={styles.container}>
-      <img css={styles.image} src={images[2].url} alt="album" />
+      <img css={styles.image} src={images[2].url} alt="" />
       <section>
         <p css={styles.title}>{name}</p>
         <p css={styles.artist}>{artist}</p>

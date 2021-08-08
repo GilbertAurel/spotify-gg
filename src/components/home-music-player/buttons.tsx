@@ -3,7 +3,7 @@
 import { css, jsx } from '@emotion/react';
 import React from 'react';
 import { ForwardIcon, PlayIcon, RewindIcon } from 'assets/icons/components';
-import { COLORS } from 'assets/theme';
+import { COLORS, SIZES } from 'assets/theme';
 
 const PlayerButtons: React.FC = () => {
   const styles = {
@@ -13,18 +13,18 @@ const PlayerButtons: React.FC = () => {
       gap: 1rem;
     `,
     rewindIcon: {
-      height: '24px',
-      width: '24px',
+      height: SIZES.icon,
+      width: SIZES.icon,
       fill: COLORS.darkblue
     },
     playIcon: {
-      height: '24px',
-      width: '24px',
+      height: SIZES.icon,
+      width: SIZES.icon,
       fill: COLORS.primary
     },
     forwardIcon: {
-      height: '24px',
-      width: '24px',
+      height: SIZES.icon,
+      width: SIZES.icon,
       fill: COLORS.darkblue
     }
   };

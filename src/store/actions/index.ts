@@ -5,6 +5,7 @@ export interface User {
   id: string;
   images: any[];
   uri: string;
+  email: string;
 }
 
 export interface Track {

@@ -8,7 +8,9 @@ const scope = [
   'playlist-modify-private',
   'playlist-modify-public',
   'playlist-read-private',
-  'user-read-playback-state'
+  'user-read-playback-state',
+  'user-read-private',
+  'user-read-email'
 ].join('%20');
 
 export const LOGIN_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_ID}&response_type=token&redirect_uri=${DEV_URL}&scope=${scope}`;

@@ -1,7 +1,12 @@
 import { ActionTypes } from 'store/action-types';
-import { Actions } from 'store/actions';
+import { Actions, EditorPicks, Track } from 'store/actions';
 
-const initialState = {
+type State = {
+  newReleases: Track[];
+  editorPicks: EditorPicks[];
+};
+
+const initialState: State = {
   newReleases: [],
   editorPicks: []
 };

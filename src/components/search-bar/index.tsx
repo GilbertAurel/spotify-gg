@@ -3,7 +3,7 @@
 import { css, jsx } from '@emotion/react';
 import React from 'react';
 import { SearchIcon } from 'assets/icons/components';
-import { COLORS, FONTS } from 'assets/theme';
+import { COLORS, FONTS, SIZES } from 'assets/theme';
 
 const SearchBar: React.FC = () => {
   const styles = {
@@ -24,8 +24,8 @@ const SearchBar: React.FC = () => {
       transform: translateX(-50%);
     `,
     searchIcon: {
-      height: '24px',
-      width: '24px',
+      height: SIZES.icon,
+      width: SIZES.icon,
       fill: COLORS.placeholder
     },
     searchInput: css`

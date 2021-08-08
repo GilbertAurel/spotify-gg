@@ -33,3 +33,7 @@ export const FONTS = {
     font-family: 'Noto Sans', sans-serif;
   `
 };
+
+export const SIZES = {
+  icon: '24px'
+};

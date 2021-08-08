@@ -11,8 +11,7 @@ import Card from './Card';
 const title = 'New Releases';
 
 const NewReleases: React.FC = () => {
-  const { newReleases } = useSelector((state: RootState) => state.playlist);
-  const tracks: Track[] = [...newReleases];
+  const tracks = useSelector((state: RootState) => state.playlist.newReleases);
 
   return (
     <WidgetLayout title={title}>

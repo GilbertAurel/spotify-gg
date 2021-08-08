@@ -1,11 +1,4 @@
-import React, { useEffect } from 'react';
-import HomeCarousel from 'components/home-carousel';
-import NewReleases from 'components/home-new-releases';
-import HomeHeader from 'components/home-header';
-
-import Layout from 'layout/PageWithMusicPlayer';
-import SearchBar from 'components/search-bar';
-import EditorPicks from 'components/home-editor-picks';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
   EDITOR_PICKS_URL,
@@ -19,8 +12,17 @@ import {
 } from 'store/action-creators';
 import { useDispatch } from 'react-redux';
 
+import Layout from 'layout/PageWithMusicPlayer';
+import HomeCarousel from 'components/home-carousel';
+import HomeHeader from 'components/home-header';
+import SearchBar from 'components/search-bar';
+import NewReleasesWidget from 'components/home-new-releases';
+import EditorPicksWidget from 'components/home-editor-picks';
+import SideMenu from 'components/side-menu';
+
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   useEffect(() => {
     const token = window.localStorage.getItem('token');
@@ -34,8 +36,8 @@ const HomePage: React.FC = () => {
           Authorization: `Bearer ${token}`
         }
       }).then((res) => {
-        const { display_name: name, id, images, uri } = res.data;
-        const user = { name, id, images, uri };
+        const { display_name: name, id, images, uri, email } = res.data;
+        const user = { name, id, images, uri, email };
         dispatch(setLoginData(user, token, expires));
       });
 
@@ -46,7 +48,7 @@ const HomePage: React.FC = () => {
           Authorization: `Bearer ${token}`
         },
         params: {
-          limit: 10
+          limit: 20
         }
       }).then((res) => {
         const newRelases = res.data.albums.items.map((item: any) => ({
@@ -80,13 +82,16 @@ const HomePage: React.FC = () => {
     }
   }, []);
 
+  const toggleMenuHandler = () => setToggleMenu(!toggleMenu);
+
   return (
     <Layout>
-      <HomeHeader />
+      <HomeHeader toggleMenu={toggleMenuHandler} />
       <SearchBar />
       <HomeCarousel />
-      <NewReleases />
-      <EditorPicks />
+      <NewReleasesWidget />
+      <EditorPicksWidget />
+      {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
     </Layout>
   );
 };
