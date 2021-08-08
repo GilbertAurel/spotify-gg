@@ -1,6 +1,7 @@
 import { ActionTypes } from 'store/action-types';
 import { Dispatch } from 'redux';
-import { Actions, EditorPicks, Playlists, Track, User } from 'store/actions';
+import { EditorPicks, Playlists, Track, User } from 'store/actions/payloads';
+import { Actions } from 'store/actions';
 
 type DispatchType = Dispatch<Actions>;
 
@@ -32,5 +33,13 @@ export const setPlaylists =
     dispatch({
       type: ActionTypes.SET_PLAYLIST,
       payload: playlists
+    });
+  };
+
+export const setPlaylistTracks =
+  (tracks: Track[]) => (dispatch: DispatchType) => {
+    dispatch({
+      type: ActionTypes.SET_PLAYLIST_TRACKS,
+      payload: tracks
     });
   };

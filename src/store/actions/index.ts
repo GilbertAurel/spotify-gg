@@ -1,33 +1,5 @@
 import { ActionTypes } from 'store/action-types';
-
-export interface User {
-  name: string;
-  id: string;
-  images: any[];
-  uri: string;
-  email: string;
-}
-
-export interface Track {
-  name: string;
-  images: any[];
-  artist: string;
-  uri: string;
-  duration?: string;
-}
-
-export interface EditorPicks {
-  name: string;
-  images: any[];
-  trackUrl: string;
-}
-
-export interface Playlists {
-  name: string;
-  image: any[];
-  id: string;
-  description: string;
-}
+import { EditorPicks, Playlists, Track, User } from './payloads';
 
 interface LoginAction {
   type: ActionTypes.LOGIN_AUTH;
@@ -53,8 +25,14 @@ interface PlaylistsAction {
   payload: Playlists[];
 }
 
+interface PlaylistTracksAction {
+  type: ActionTypes.SET_PLAYLIST_TRACKS;
+  payload: Track[];
+}
+
 export type Actions =
   | LoginAction
   | NewReleasesAction
   | EditorPicksAction
-  | PlaylistsAction;
+  | PlaylistsAction
+  | PlaylistTracksAction;

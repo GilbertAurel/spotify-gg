@@ -11,12 +11,12 @@ export const BUTTONS: ButtonType[] = [
   {
     name: 'Playlist',
     Icon: PlaylistIcon,
-    path: '/playlist'
+    path: '/playlists'
   },
   {
     name: 'Settings',
     Icon: SettingIcon,
-    path: '/playlist'
+    path: '/playlists'
   },
   {
     name: 'Sign out',

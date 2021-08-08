@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React from 'react';
 import { css, jsx } from '@emotion/react';
-import { EditorPicks } from 'store/actions';
+import { EditorPicks } from 'store/actions/payloads';
 
 interface Props {
   album: EditorPicks;

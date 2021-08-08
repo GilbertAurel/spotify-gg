@@ -5,7 +5,7 @@ import React from 'react';
 import WidgetLayout from 'layout/HomeWidgetWithTitle';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
-import { EditorPicks } from 'store/actions';
+import { EditorPicks } from 'store/actions/payloads';
 import AlbumCard from './Card';
 
 const title = "Editor's Picks";

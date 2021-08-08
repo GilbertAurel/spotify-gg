@@ -1,16 +1,19 @@
 import { ActionTypes } from 'store/action-types';
-import { Actions, EditorPicks, Playlists, Track } from 'store/actions';
+import { EditorPicks, Playlists, Track } from 'store/actions/payloads';
+import { Actions } from 'store/actions';
 
 type State = {
   newReleases: Track[];
   editorPicks: EditorPicks[];
   playlists: Playlists[];
+  tracks: Track[];
 };
 
 const initialState: State = {
   newReleases: [],
   editorPicks: [],
-  playlists: []
+  playlists: [],
+  tracks: []
 };
 
 const playlistReducer = (state = initialState, action: Actions) => {
@@ -29,6 +32,11 @@ const playlistReducer = (state = initialState, action: Actions) => {
       return {
         ...state,
         playlists: action.payload
+      };
+    case ActionTypes.SET_PLAYLIST_TRACKS:
+      return {
+        ...state,
+        tracks: action.payload
       };
     default:
       return state;
