@@ -17,17 +17,17 @@ const SideMenu: React.FC<Props> = ({ toggleMenu }) => {
   const history = useHistory();
 
   const onClickHandler = (name: string, path: string) => {
-    if (name === 'sign out') {
+    if (name === 'Sign out') {
       const spotifyLogoutWindow = window.open(
         LOGOUT_URL,
         'Spotify Logout',
         'width=700,height=500'
       );
 
-      setTimeout(() => {
+      return setTimeout(() => {
         spotifyLogoutWindow?.close();
         localStorage.clear();
-        return history.go(0);
+        history.go(0);
       }, 2000);
     }
 
