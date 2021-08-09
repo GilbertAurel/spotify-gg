@@ -5,7 +5,7 @@ import React from 'react';
 import WidgetLayout from 'layout/HomeWidgetWithTitle';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
-import { Track } from 'store/actions';
+import { Track } from 'store/actions/payloads';
 import Card from './Card';
 
 const title = 'New Releases';

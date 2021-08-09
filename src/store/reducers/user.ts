@@ -1,5 +1,6 @@
 import { ActionTypes } from 'store/action-types';
-import { Actions, User } from 'store/actions';
+import { Actions } from 'store/actions';
+import { User } from 'store/actions/payloads';
 
 type State = {
   token: string;

@@ -3,7 +3,7 @@
 import React from 'react';
 import { css, jsx } from '@emotion/react';
 import { COLORS, FONTS } from 'assets/theme';
-import { Track } from 'store/actions';
+import { Track } from 'store/actions/payloads';
 
 interface Props {
   track: Track;
