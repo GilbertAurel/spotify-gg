@@ -1,13 +1,18 @@
-import axios from 'axios';
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { css, jsx } from '@emotion/react';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { setPlaylistTracks } from 'store/action-creators';
-import { Track } from 'store/actions/payloads';
 import { RootState } from 'store/reducers';
+import { useLocation } from 'react-router-dom';
 import { PLAYLIST_TRACKS_URL } from 'utils/apis/endpoints';
+import { setPlaylistTracks } from 'store/action-creators';
+import Layout from 'layout/PageWithMusicPlayer';
+import SongList from 'components/song-list';
+import SongListHeader from 'components/song-list-header';
 
-const PlaylistDetailPage: React.FC = () => {
+const PlaylistPage: React.FC = () => {
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state.user.token);
   const playlistId = useLocation().pathname.split('/')[2];
@@ -38,16 +43,24 @@ const PlaylistDetailPage: React.FC = () => {
     }
   }, []);
 
+  const styles = {
+    container: css`
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      grid-template-rows: 5rem 1fr;
+    `
+  };
+
   return (
-    <div>
-      {tracks.map((item: Track) => (
-        <div>
-          <img src={item.images[2].url} alt="" />
-          <p>{item.name}</p>
-        </div>
-      ))}
-    </div>
+    <Layout>
+      <div css={styles.container}>
+        <SongListHeader />
+        <SongList tracks={tracks} />
+      </div>
+    </Layout>
   );
 };
 
-export default PlaylistDetailPage;
+export default PlaylistPage;

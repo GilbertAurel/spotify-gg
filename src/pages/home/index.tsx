@@ -1,3 +1,6 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { css, jsx } from '@emotion/react';
 import React, { useState } from 'react';
 import Layout from 'layout/PageWithMusicPlayer';
 import HomeCarousel from 'components/home-carousel';
@@ -14,15 +17,27 @@ const HomePage: React.FC = () => {
 
   const toggleMenuHandler = () => setToggleMenu(!toggleMenu);
 
+  const styles = {
+    container: css`
+      padding-bottom: 5rem;
+      display: grid;
+      position: relative;
+      grid-auto-rows: minmax(5rem, auto);
+      overflow-y: scroll;
+    `
+  };
+
   if (loaded) {
     return (
       <Layout>
-        <HomeHeader toggleMenu={toggleMenuHandler} />
-        <SearchBar />
-        <HomeCarousel />
-        <NewReleasesWidget />
-        <EditorPicksWidget />
-        {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
+        <div css={styles.container}>
+          <HomeHeader toggleMenu={toggleMenuHandler} />
+          <SearchBar />
+          <HomeCarousel />
+          <NewReleasesWidget />
+          <EditorPicksWidget />
+          {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
+        </div>
       </Layout>
     );
   }
