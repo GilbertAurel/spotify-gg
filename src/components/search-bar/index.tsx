@@ -4,8 +4,16 @@ import { css, jsx } from '@emotion/react';
 import React from 'react';
 import { SearchIcon } from 'assets/icons/components';
 import { COLORS, FONTS, SIZES } from 'assets/theme';
+import { useHistory } from 'react-router-dom';
+import useForm from 'utils/helpers/useForm';
+
+const initialValue = {
+  search: ''
+};
 
 const SearchBar: React.FC = () => {
+  const history = useHistory();
+  const [value, changeHandler] = useForm({ initialValue });
   const styles = {
     container: css`
       padding: 0 10%;
@@ -39,19 +47,37 @@ const SearchBar: React.FC = () => {
       background-color: ${COLORS.lightgray};
       color: ${COLORS.placeholder};
       ${FONTS.p}
+    `,
+    submitButton: css`
+      display: none;
     `
   };
 
+  const searchSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (value.search) {
+      const params = new URLSearchParams();
+      params.append('name', value.search);
+      history.push({ pathname: '/search', search: params.toString() });
+    }
+  };
+
   return (
-    <form css={styles.container}>
+    <form css={styles.container} onSubmit={searchSubmitHandler}>
       <div css={styles.searchIconContainer}>
         <SearchIcon {...styles.searchIcon} />
       </div>
       <input
         css={styles.searchInput}
+        name="search"
         type="text"
         placeholder="Albums, Artists, or Podcasts"
+        onChange={changeHandler}
       />
+      <button css={styles.submitButton} type="submit">
+        submit
+      </button>
     </form>
   );
 };

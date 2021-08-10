@@ -21,5 +21,10 @@ export const PAGES: IRoutes[] = [
     path: '/playlist/:id',
     exact: false,
     component: lazy(() => import('pages/playlist-details'))
+  },
+  {
+    path: '/search',
+    exact: false,
+    component: lazy(() => import('pages/track-list'))
   }
 ];
