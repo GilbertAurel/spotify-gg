@@ -58,7 +58,7 @@ const SearchBar: React.FC = () => {
 
     if (value.search) {
       const params = new URLSearchParams();
-      params.append('name', value.search);
+      params.append('title', value.search);
       history.push({ pathname: '/search', search: params.toString() });
     }
   };
@@ -74,8 +74,13 @@ const SearchBar: React.FC = () => {
         type="text"
         placeholder="Albums, Artists, or Podcasts"
         onChange={changeHandler}
+        data-testid="input-form"
       />
-      <button css={styles.submitButton} type="submit">
+      <button
+        css={styles.submitButton}
+        type="submit"
+        data-testid="submit-button"
+      >
         submit
       </button>
     </form>

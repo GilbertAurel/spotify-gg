@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Login from 'pages/login';
 import PrivateRoute from './PrivateRoute';
-import { PAGES } from './pages';
+import { ROUTES } from './routes';
 
 const LoadingPlaceholder: React.FC = () => <div />;
 
@@ -23,7 +23,7 @@ const index: React.FC = () => {
             path="/"
             render={() => (token ? <Redirect to="/home" /> : <Login />)}
           />
-          {PAGES.map((route) => (
+          {ROUTES.map((route) => (
             <PrivateRoute
               key={route.path}
               path={route.path}

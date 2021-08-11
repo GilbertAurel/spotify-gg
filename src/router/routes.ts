@@ -6,7 +6,7 @@ export type IRoutes = {
   exact: boolean;
 };
 
-export const PAGES: IRoutes[] = [
+export const ROUTES: IRoutes[] = [
   {
     path: '/home',
     exact: true,

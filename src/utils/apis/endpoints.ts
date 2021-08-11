@@ -26,3 +26,5 @@ export const PLAYLIST_URL = 'https://api.spotify.com/v1/me/playlists';
 
 export const PLAYLIST_TRACKS_URL = (id: string) =>
   `https://api.spotify.com/v1/playlists/${id}/tracks`;
+
+export const SEARCH_URL = 'https://api.spotify.com/v1/search';
