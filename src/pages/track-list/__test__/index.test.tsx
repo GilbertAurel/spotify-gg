@@ -1,42 +1,62 @@
-import { cleanup, render } from '@testing-library/react';
-import SearchPage from '../index';
+import { render, screen, waitFor } from '@testing-library/react';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+import TrackList from '../index';
 import * as redux from 'react-redux';
-import * as searchFunction from 'utils/apis/useSearchTracks';
+import { SEARCH_URL } from 'utils/apis/endpoints';
 
-let getByTestId: any;
-const reduxSpy = jest.spyOn(redux, 'useSelector');
-const tracks = jest.spyOn(searchFunction, 'useSearchTracks');
+const tracks = {
+  items: [
+    {
+      album: {
+        images: []
+      },
+      artists: [
+        {
+          name: 'YOASOBI'
+        }
+      ],
+      duration_ms: 261013,
+      name: '夜に駆ける',
+      uri: 'spotify:track:3dPtXHP0oXQ4HCWHsOA9js'
+    }
+  ]
+};
 
-beforeAll(() => {
-  const component = render(<SearchPage />);
-  getByTestId = component.getByTestId;
+const mockUseSelector = jest.spyOn(redux, 'useSelector');
+const mockURLParams = jest.spyOn(URLSearchParams.prototype, 'get');
+
+const server = setupServer(
+  rest.get(SEARCH_URL, (req, res, ctx) => {
+    return res(ctx.json({ tracks }));
+  })
+);
+
+beforeAll(() => server.listen());
+beforeEach(() => {
+  mockURLParams.mockReturnValue('song title');
+  mockUseSelector.mockReturnValue('user token');
+});
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+test('should render track list', async () => {
+  render(<TrackList />);
+  expect(await screen.findAllByRole('listitem')).toHaveLength(1);
 });
 
-afterEach(cleanup);
+test('should render item not found', async () => {
+  render(<TrackList />);
+  waitFor(() =>
+    server.use(
+      rest.get(SEARCH_URL, (req, res, ctx) => {
+        return res(
+          ctx.status(501),
+          ctx.json({ message: 'internal server error' })
+        );
+      })
+    )
+  );
 
-describe('renders track list page', () => {
-  reduxSpy.mockReturnValue({ token: 'mock token' });
-
-  tracks.mockReturnValue({
-    loaded: true,
-    tracks: [
-      {
-        name: 'test',
-        artist: 'test',
-        images: [],
-        uri: 'test',
-        duration: 'test'
-      }
-    ]
-  });
-  
-
-  it('it should render loading first', () => {
-    expect(getByTestId('loading').textContent).toBe('loading..');
-  });
-
-  it('show search result should render properly', () => {
-    const container = getByTestId('item-wrapper');
-    expect(container).toBeInTheDocument();
-  });
+  expect(await screen.findByTestId('loading')).toBeInTheDocument();
 });
