@@ -47,7 +47,7 @@ test('should render track list', async () => {
 
 test('should render item not found', async () => {
   render(<TrackList />);
-  waitFor(() =>
+  await waitFor(() =>
     server.use(
       rest.get(SEARCH_URL, (req, res, ctx) => {
         return res(
