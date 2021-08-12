@@ -10,21 +10,22 @@ export const useSearchTracks = () => {
   const searchInput = new URLSearchParams(window.location.search).get('title');
   const [tracks, setTracks] = useState<Track[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (searchInput) {
-      axios({
-        method: 'GET',
-        url: SEARCH_URL,
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        params: {
-          q: searchInput,
-          type: 'track',
-          limit: 15
-        }
-      }).then((res) => {
+    axios({
+      method: 'GET',
+      url: SEARCH_URL,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      params: {
+        q: searchInput,
+        type: 'track',
+        limit: 15
+      }
+    })
+      .then((res) => {
         const data = res.data.tracks.items.map((item: any) => ({
           name: item.name,
           images: item.album.images,
@@ -35,9 +36,9 @@ export const useSearchTracks = () => {
 
         setTracks(data);
         setLoaded(true);
-      });
-    }
+      })
+      .catch(() => setError(true));
   }, []);
 
-  return { loaded, tracks };
+  return { loaded, tracks, error };
 };
