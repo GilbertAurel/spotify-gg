@@ -1,30 +1,21 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import TrackList from '../index';
+import { rest } from 'msw';
 import * as redux from 'react-redux';
 import { SEARCH_URL } from 'utils/apis/endpoints';
+import TrackList from '../index';
 
 const tracks = {
   items: [
     {
-      album: {
-        images: []
-      },
-      artists: [
-        {
-          name: 'YOASOBI'
-        }
-      ],
+      album: { images: [{ url: 'image url' }] },
+      artists: [{ name: 'artist name' }],
       duration_ms: 261013,
-      name: '夜に駆ける',
-      uri: 'spotify:track:3dPtXHP0oXQ4HCWHsOA9js'
+      name: 'song name',
+      uri: 'uri'
     }
   ]
 };
-
-const mockUseSelector = jest.spyOn(redux, 'useSelector');
-const mockURLParams = jest.spyOn(URLSearchParams.prototype, 'get');
 
 const server = setupServer(
   rest.get(SEARCH_URL, (req, res, ctx) => {
@@ -34,8 +25,8 @@ const server = setupServer(
 
 beforeAll(() => server.listen());
 beforeEach(() => {
-  mockURLParams.mockReturnValue('song title');
-  mockUseSelector.mockReturnValue('user token');
+  jest.spyOn(redux, 'useSelector').mockReturnValue('token');
+  jest.spyOn(URLSearchParams.prototype, 'get').mockReturnValue('search params');
 });
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
@@ -47,12 +38,13 @@ test('should render track list', async () => {
 
 test('should render item not found', async () => {
   render(<TrackList />);
+
   await waitFor(() =>
     server.use(
       rest.get(SEARCH_URL, (req, res, ctx) => {
         return res(
-          ctx.status(501),
-          ctx.json({ message: 'internal server error' })
+          ctx.status(503),
+          ctx.json({ message: 'Service Unavailable' })
         );
       })
     )
