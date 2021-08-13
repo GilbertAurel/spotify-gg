@@ -22,7 +22,7 @@ const SongList: React.FC<Props> = ({ tracks }) => {
   return (
     <div css={styles.container}>
       {tracks.map((item: Track) => (
-        <SongCard item={item} />
+        <SongCard key={item.uri} item={item} />
       ))}
     </div>
   );
