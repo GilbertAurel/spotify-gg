@@ -1,27 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import * as redux from 'react-redux';
 import { SEARCH_URL } from 'utils/apis/endpoints';
 import TrackListPage from '../index';
-
-const tracks = {
-  items: [
-    {
-      album: { images: [{ url: 'image url' }] },
-      artists: [{ name: 'artist name' }],
-      duration_ms: 261013,
-      name: 'song name',
-      uri: 'uri'
-    }
-  ]
-};
-
-const server = setupServer(
-  rest.get(SEARCH_URL, (req, res, ctx) => {
-    return res(ctx.json({ tracks }));
-  })
-);
+import { server } from 'utils/test/serverHandlers';
 
 beforeAll(() => server.listen());
 beforeEach(() => {
