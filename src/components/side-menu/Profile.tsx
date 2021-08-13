@@ -52,10 +52,15 @@ const Profile: React.FC = () => {
         css={styles.image}
         src={images[0]?.url ? images[0].url : Avatar}
         alt="avatar"
+        data-testid="user-image"
       />
       <section>
-        <p css={styles.name}>{name}</p>
-        <p css={styles.email}>{email}</p>
+        <p css={styles.name} data-testid="user-name">
+          {name}
+        </p>
+        <p css={styles.email} data-testid="user-email">
+          {email}
+        </p>
       </section>
     </div>
   );

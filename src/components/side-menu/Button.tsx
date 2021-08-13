@@ -36,6 +36,7 @@ const Button: React.FC<Props> = ({ clickHandler, name, Icon, path }) => {
       css={styles.container}
       onClick={() => clickHandler(name, path)}
       role="presentation"
+      data-testid="menu-button"
     >
       <Icon {...styles.icon} />
       <p css={styles.label}>{name}</p>

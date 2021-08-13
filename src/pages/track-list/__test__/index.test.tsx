@@ -3,7 +3,7 @@ import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import * as redux from 'react-redux';
 import { SEARCH_URL } from 'utils/apis/endpoints';
-import TrackList from '../index';
+import TrackListPage from '../index';
 
 const tracks = {
   items: [
@@ -31,13 +31,13 @@ beforeEach(() => {
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test('should render track list', async () => {
-  render(<TrackList />);
+it('should render track list', async () => {
+  render(<TrackListPage />);
   expect(await screen.findAllByRole('listitem')).toHaveLength(1);
 });
 
-test('should render item not found', async () => {
-  render(<TrackList />);
+it('should render item not found', async () => {
+  render(<TrackListPage />);
 
   await waitFor(() =>
     server.use(

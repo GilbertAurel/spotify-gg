@@ -21,7 +21,7 @@ const PlaylistList: React.FC = () => {
   return (
     <div css={styles.container}>
       {playlists.map((item) => (
-        <PlaylistCard item={item} />
+        <PlaylistCard key={item.id} item={item} />
       ))}
     </div>
   );

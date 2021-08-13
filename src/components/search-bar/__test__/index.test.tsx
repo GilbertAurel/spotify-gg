@@ -1,35 +1,41 @@
-import { cleanup, render, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Router } from 'react-router';
+import { createMemoryHistory } from 'history';
 import SearchBar from '../index';
 
-let getByTestId: any;
+const searchMock = 'title';
+const history = createMemoryHistory();
 
-beforeEach(() => {
-  const component = render(<SearchBar />);
-  getByTestId = component.getByTestId;
+it('should render search bar with empty text input and button', () => {
+  render(<SearchBar />);
+  expect(screen.getByTestId('input-form')).toHaveValue('');
+  expect(screen.getByTestId('submit-button')).toBeInTheDocument();
 });
 
-afterEach(cleanup);
+it('input form value should change', () => {
+  render(<SearchBar />);
 
-describe('search input form', () => {
-  it('input value start with blank', () => {
-    expect(getByTestId('input-form')).toHaveValue('');
+  const inputForm = screen.getByTestId('input-form');
+  const changeValue = fireEvent.change(inputForm, {
+    target: { value: searchMock }
   });
 
-  it('change input value', async () => {
-    const formInput = getByTestId('input-form');
-
-    await waitFor(() => {
-      fireEvent.change(formInput, {
-        target: { value: 'search value' }
-      });
-    });
-
-    expect(formInput.value).toBe('search value');
-  });
+  expect(changeValue).toBeTruthy();
 });
 
-describe('submit button', () => {
-  it('button pressed should be working properly', () => {
-    fireEvent.click(getByTestId('submit-button'));
-  });
+it('button click should redirect to other page', () => {
+  render(
+    <Router history={history}>
+      <SearchBar />
+    </Router>
+  );
+
+  const inputForm = screen.getByTestId('input-form');
+  fireEvent.change(inputForm, { target: { value: searchMock } });
+
+  const button = screen.getByTestId('submit-button');
+  fireEvent.click(button);
+
+  expect(history.location.search).toBe(`?title=${searchMock}`);
+  expect(history.location.pathname).toBe('/search');
 });

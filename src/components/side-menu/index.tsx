@@ -67,7 +67,12 @@ const SideMenu: React.FC<Props> = ({ toggleMenu }) => {
 
   return (
     <div css={styles.container}>
-      <div css={styles.shader} onClick={toggleMenu} role="presentation" />
+      <div
+        css={styles.shader}
+        onClick={toggleMenu}
+        role="presentation"
+        data-testid="close-menu-button"
+      />
       <div css={styles.innerContainer}>
         <Profile />
         {BUTTONS.map((button) => (

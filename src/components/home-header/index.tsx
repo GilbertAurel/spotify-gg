@@ -44,6 +44,7 @@ const HomeHeader: React.FC<Props> = ({ toggleMenu }) => {
         css={styles.photo}
         onClick={toggleMenu}
         role="presentation"
+        data-testid="avatar-button"
       />
     </div>
   );

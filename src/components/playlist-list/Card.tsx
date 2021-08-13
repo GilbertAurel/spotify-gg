@@ -35,6 +35,7 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
       css={styles.container}
       to={`/playlist/${item.id}`}
       role="presentation"
+      data-testid="playlist-button"
     >
       <img css={styles.image} src={item.image[0].url} alt="" />
       <h1 css={styles.title}>{item.name}</h1>

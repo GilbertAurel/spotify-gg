@@ -98,8 +98,8 @@ export const initialFetch = () => {
     });
 
   useEffect(() => {
-    const token = window.localStorage.getItem('token');
     const expires = window.localStorage.getItem('expires');
+    const token = window.localStorage.getItem('token');
 
     if (token && expires) {
       Promise.all([
