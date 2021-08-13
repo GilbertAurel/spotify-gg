@@ -1,4 +1,7 @@
-export const DEV_URL = encodeURIComponent('http://localhost:3000');
+export const URL =
+  process.env.NODE_ENV === 'development'
+    ? encodeURIComponent('http://localhost:3000')
+    : encodeURIComponent('https://gg-spotify.vercel.app');
 
 const scope = [
   'user-read-currently-playing',
@@ -10,7 +13,7 @@ const scope = [
   'user-read-email'
 ].join('%20');
 
-export const LOGIN_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_ID}&response_type=token&redirect_uri=${DEV_URL}&scope=${scope}`;
+export const LOGIN_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_ID}&response_type=token&redirect_uri=${URL}&scope=${scope}`;
 
 export const LOGOUT_URL = `https://accounts.spotify.com/en/logout`;
 
