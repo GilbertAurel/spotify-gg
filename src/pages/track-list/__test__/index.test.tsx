@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import * as redux from 'react-redux';
 import { SEARCH_URL } from 'utils/apis/endpoints';
@@ -24,10 +25,7 @@ it('should render item not found', async () => {
   await waitFor(() =>
     server.use(
       rest.get(SEARCH_URL, (req, res, ctx) => {
-        return res(
-          ctx.status(503),
-          ctx.json({ message: 'Service Unavailable' })
-        );
+        return res(ctx.status(204), ctx.json({ message: 'empty data' }));
       })
     )
   );
