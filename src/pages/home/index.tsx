@@ -23,7 +23,6 @@ const HomePage: React.FC = () => {
       display: grid;
       position: relative;
       grid-auto-rows: minmax(5rem, auto);
-      overflow-y: scroll;
     `
   };
 
