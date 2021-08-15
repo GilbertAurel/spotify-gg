@@ -2,7 +2,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import { COLORS } from 'assets/theme';
-import NavbarMusicPlayer from 'components/navbar-music-player';
 import React from 'react';
 
 interface Props {
@@ -24,12 +23,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     `
   };
 
-  return (
-    <div css={styles.container}>
-      {children}
-      <NavbarMusicPlayer />
-    </div>
-  );
+  return <div css={styles.container}>{children}</div>;
 };
 
 export default Layout;
