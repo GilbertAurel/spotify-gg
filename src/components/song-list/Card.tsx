@@ -29,10 +29,10 @@ const SongCard: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <div css={styles.container}>
+    <li css={styles.container}>
       <img css={styles.image} src={item.images[2].url} alt="" />
       <p css={styles.title}>{item.name}</p>
-    </div>
+    </li>
   );
 };
 
