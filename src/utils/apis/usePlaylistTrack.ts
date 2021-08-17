@@ -11,6 +11,7 @@ const usePlaylistTrack = () => {
   const token = useSelector((state: RootState) => state.user.token);
   const playlistId = useLocation().pathname.split('/')[2];
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (playlistId && token) {
@@ -23,21 +24,23 @@ const usePlaylistTrack = () => {
         params: {
           limit: 20
         }
-      }).then((res) => {
-        const data = res.data.items.map((item: any) => ({
-          artist: item.track.artists[0].name,
-          images: item.track.album.images,
-          name: item.track.name,
-          uri: item.track.uri
-        }));
+      })
+        .then((res) => {
+          const data = res.data.items.map((item: any) => ({
+            artist: item.track.artists[0].name,
+            images: item.track.album.images,
+            name: item.track.name,
+            uri: item.track.uri
+          }));
 
-        dispatch(setPlaylistTracks(data));
-        setLoaded(true);
-      });
+          dispatch(setPlaylistTracks(data));
+          setLoaded(true);
+        })
+        .catch(() => setError(true));
     }
   }, []);
 
-  return { loaded };
+  return { loaded, error };
 };
 
 export default usePlaylistTrack;
