@@ -10,7 +10,7 @@ import SongListHeader from 'components/song-list-header';
 import usePlaylistTrack from 'utils/apis/usePlaylistTrack';
 
 const PlaylistPage: React.FC = () => {
-  const { loaded } = usePlaylistTrack();
+  const { loaded, error } = usePlaylistTrack();
   const tracks = useSelector((state: RootState) => state.playlist.tracks);
 
   const styles = {
@@ -23,18 +23,18 @@ const PlaylistPage: React.FC = () => {
     `
   };
 
-  if (loaded) {
-    return (
-      <Layout>
-        <div css={styles.container}>
-          <SongListHeader />
-          <SongList tracks={tracks} />
-        </div>
-      </Layout>
-    );
-  }
+  if (error) return <h1>Something went wrong...</h1>;
 
-  return <h1>Loading..</h1>;
+  if (!loaded) return <h1>Loading..</h1>;
+
+  return (
+    <Layout>
+      <div css={styles.container}>
+        <SongListHeader />
+        <SongList tracks={tracks} />
+      </div>
+    </Layout>
+  );
 };
 
 export default PlaylistPage;
