@@ -13,6 +13,8 @@ export const useSearchTracks = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    setLoaded(false);
+
     axios({
       method: 'GET',
       url: SEARCH_URL,
@@ -35,9 +37,10 @@ export const useSearchTracks = () => {
         }));
 
         setTracks(data);
-        setLoaded(true);
       })
       .catch(() => setError(true));
+
+    setLoaded(true);
   }, []);
 
   return { loaded, tracks, error };
