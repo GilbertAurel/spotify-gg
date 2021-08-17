@@ -1,5 +1,4 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import * as redux from 'react-redux';
 import { SEARCH_URL } from 'utils/apis/endpoints';
@@ -14,12 +13,7 @@ beforeEach(() => {
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-it('should render track list', async () => {
-  render(<TrackListPage />);
-  expect(await screen.findAllByRole('listitem')).toHaveLength(1);
-});
-
-it('should render item not found', async () => {
+it('should render loading item and error alert item not found', async () => {
   render(<TrackListPage />);
 
   await waitFor(() =>
@@ -30,5 +24,5 @@ it('should render item not found', async () => {
     )
   );
 
-  expect(await screen.findByTestId('loading')).toBeInTheDocument();
+  expect(await screen.findByTestId('error-alert')).toBeInTheDocument();
 });

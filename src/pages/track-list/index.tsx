@@ -1,6 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
+import SongList from 'components/song-list';
+import SongListHeader from 'components/song-list-header';
 import React from 'react';
 import { useSearchTracks } from 'utils/apis/useSearchTracks';
 
@@ -21,19 +23,12 @@ const TrackListPage: React.FC = () => {
 
   if (!loaded) return <h1 data-testid="loading">loading..</h1>;
 
+  // TODO: ADD STYLE AND CONNECTING COMPONENTS
+
   return (
     <div css={styles.container}>
-      <div>
-        <button type="button" data-testid="back-button">
-          back button
-        </button>
-        <h1 data-testid="header-title">Search</h1>
-      </div>
-      <ul>
-        {tracks.map((item) => (
-          <li key={item.uri}>{item.name}</li>
-        ))}
-      </ul>
+      <SongListHeader />
+      <SongList tracks={tracks} />
     </div>
   );
 };
