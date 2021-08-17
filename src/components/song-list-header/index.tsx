@@ -8,6 +8,8 @@ const SongListHeader: React.FC = () => {
   const styles = {
     container: css`
       padding: 0 10%;
+      position: sticky;
+      top: 0;
       display: grid;
       justify-content: center;
       align-content: flex-end;
