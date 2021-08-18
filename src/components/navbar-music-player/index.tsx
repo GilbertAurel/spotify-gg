@@ -19,26 +19,23 @@ const NavbarMusicPlayer: React.FC = () => {
     `,
     content: css`
       margin: 0.5rem 5%;
-      background-color: ${COLORS.lightblue};
-      border-radius: 0.5rem;
-    `,
-    trackDetails: css`
       padding: 0.5rem 0.8rem;
+      position: relative;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      background-color: ${COLORS.lightblue};
+      border-radius: 0.5rem;
     `
   };
 
   return (
     <div css={styles.container}>
       <div css={styles.content}>
+        <PlayerDetails />
+        <PlayerButtons />
         <PlayerTracker />
-        <div css={styles.trackDetails}>
-          <PlayerDetails />
-          <PlayerButtons />
-        </div>
       </div>
       <Navbar />
     </div>
