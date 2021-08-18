@@ -13,14 +13,14 @@ export const ROUTES: IRoutes[] = [
     component: lazy(() => import('pages/home'))
   },
   {
-    path: '/playlists',
-    exact: true,
-    component: lazy(() => import('pages/playlist-list'))
-  },
-  {
-    path: '/playlist/:id',
+    path: '/library/:id',
     exact: false,
     component: lazy(() => import('pages/playlist-details'))
+  },
+  {
+    path: '/library',
+    exact: true,
+    component: lazy(() => import('pages/playlist-list'))
   },
   {
     path: '/search',
