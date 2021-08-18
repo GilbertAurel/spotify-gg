@@ -5,8 +5,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
 import Layout from 'layout/PageWithMusicPlayer';
-import SongList from 'components/song-list';
-import SongListHeader from 'components/song-list-header';
+import SongList from 'components/tracks-list';
+import SongListHeader from 'components/tracks-header';
 import usePlaylistTrack from 'utils/apis/usePlaylistTrack';
 
 const PlaylistPage: React.FC = () => {

@@ -1,8 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import SongList from 'components/song-list';
-import SongListHeader from 'components/song-list-header';
+import SongList from 'components/tracks-list';
+import SongListHeader from 'components/tracks-header';
 import React from 'react';
 import { useSearchTracks } from 'utils/apis/useSearchTracks';
 
