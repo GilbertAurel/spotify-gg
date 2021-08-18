@@ -1,5 +1,7 @@
+export { default as AccountIcon } from './AccountIcon';
 export { default as ForwardIcon } from './ForwardIcon';
-export { default as Logout } from './Logout';
+export { default as HomeIcon } from './HomeIcon';
+export { default as LogoutIcon } from './LogoutIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as PlayIcon } from './PlayIcon';
 export { default as PlaylistIcon } from './PlaylistIcon';
