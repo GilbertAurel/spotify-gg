@@ -19,12 +19,26 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
       text-decoration: none;
     `,
     image: css`
-      height: 3rem;
-      width: 3rem;
+      height: 3.5rem;
+      width: 3.5rem;
       border-radius: 10%;
     `,
+    details: css`
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    `,
     title: css`
+      margin: 0;
+      padding: 0;
       color: ${COLORS.primary};
+      ${FONTS.h2}
+    `,
+    type: css`
+      margin: 0;
+      padding: 0;
+      color: ${COLORS.darkblue};
+      text-transform: capitalize;
       ${FONTS.p}
     `
   };
@@ -38,7 +52,12 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
       data-testid="playlist-button"
     >
       <img css={styles.image} src={item.image[0].url} alt="" />
-      <h1 css={styles.title}>{item.name}</h1>
+      <section css={styles.details}>
+        <p css={styles.title}>{item.name}</p>
+        <p css={styles.type}>
+          {item.type} &#183; {item.owner}
+        </p>
+      </section>
     </Link>
   );
 };

@@ -24,5 +24,7 @@ export interface Playlists {
   name: string;
   image: any[];
   id: string;
+  owner: string;
+  type: string;
   description: string;
 }

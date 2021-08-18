@@ -1,6 +1,8 @@
 export { default as AccountIcon } from './AccountIcon';
+export { default as AddIcon } from './AddIcon';
 export { default as ForwardIcon } from './ForwardIcon';
 export { default as HomeIcon } from './HomeIcon';
+export { default as ListIcon } from './ListIcon';
 export { default as LogoutIcon } from './LogoutIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as PlayIcon } from './PlayIcon';

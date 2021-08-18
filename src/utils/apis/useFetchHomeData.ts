@@ -87,10 +87,13 @@ export const initialHomeDataFetch = () => {
         Authorization: `Bearer ${token}`
       }
     }).then((res) => {
+      console.log(res);
       const data = res.data.items.map((item: any) => ({
         name: item.name,
         image: item.images,
         id: item.id,
+        owner: item.owner.display_name,
+        type: item.type,
         description: item.description
       }));
 
