@@ -10,13 +10,14 @@ const PlayerTracker: React.FC = () => {
       height: 0.25rem;
       width: 100%;
       background-color: ${COLORS.lightblue};
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
     `,
     progress: css`
       height: 100%;
       width: 40%;
       background-color: ${COLORS.primary};
-      border-top-right-radius: 0.25rem;
-      border-bottom-right-radius: 0.25rem;
+      border-top-left-radius: 5rem;
     `
   };
 
