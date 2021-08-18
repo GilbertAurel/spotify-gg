@@ -2,7 +2,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import SongList from 'components/tracks-list';
-import SongListHeader from 'components/tracks-header';
 import React from 'react';
 import { useSearchTracks } from 'utils/apis/useSearchTracks';
 
@@ -27,7 +26,6 @@ const TrackListPage: React.FC = () => {
 
   return (
     <div css={styles.container}>
-      <SongListHeader />
       <SongList tracks={tracks} />
     </div>
   );

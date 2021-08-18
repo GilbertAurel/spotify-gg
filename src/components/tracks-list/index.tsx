@@ -14,7 +14,7 @@ const SongList: React.FC<Props> = ({ tracks }) => {
     container: css`
       padding: 0 10%;
       display: grid;
-      grid-auto-rows: 5rem;
+      grid-auto-rows: 3rem;
       gap: 1rem;
     `
   };

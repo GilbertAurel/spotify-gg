@@ -10,7 +10,7 @@ import SongListHeader from 'components/tracks-header';
 import usePlaylistTrack from 'utils/apis/usePlaylistTrack';
 
 const PlaylistPage: React.FC = () => {
-  const { loaded, error } = usePlaylistTrack();
+  const { playlist, loaded, error } = usePlaylistTrack();
   const tracks = useSelector((state: RootState) => state.playlist.tracks);
 
   const styles = {
@@ -19,7 +19,7 @@ const PlaylistPage: React.FC = () => {
       position: relative;
       display: grid;
       gap: 1rem;
-      grid-template-rows: 5rem 1fr;
+      grid-template-rows: 15rem 1fr;
     `
   };
 
@@ -30,7 +30,7 @@ const PlaylistPage: React.FC = () => {
   return (
     <Layout>
       <div css={styles.container}>
-        <SongListHeader />
+        <SongListHeader playlist={playlist} />
         <SongList tracks={tracks} />
       </div>
     </Layout>

@@ -22,8 +22,19 @@ const SongCard: React.FC<Props> = ({ item }) => {
       width: 3rem;
       border-radius: 10%;
     `,
+    details: css`
+      flex: 1;
+    `,
     title: css`
+      margin: 0 0 0.2rem 0;
+      padding: 0;
       color: ${COLORS.primary};
+      ${FONTS.p}
+    `,
+    artist: css`
+      margin: 0;
+      padding: 0;
+      color: ${COLORS.blue};
       ${FONTS.p}
     `
   };
@@ -31,7 +42,10 @@ const SongCard: React.FC<Props> = ({ item }) => {
   return (
     <li css={styles.container}>
       <img css={styles.image} src={item.images[2].url} alt="" />
-      <p css={styles.title}>{item.name}</p>
+      <section css={styles.details}>
+        <p css={styles.title}>{item.name.substring(0, 30)}..</p>
+        <p css={styles.artist}>{item.artist}</p>
+      </section>
     </li>
   );
 };
