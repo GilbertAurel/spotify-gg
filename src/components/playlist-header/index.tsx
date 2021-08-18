@@ -19,16 +19,23 @@ const PlaylistHeader: React.FC = () => {
       color: ${COLORS.primary};
       ${FONTS.h2}
     `,
+    button: css`
+      background-color: transparent;
+      border: none;
+    `,
     addIcon: {
       height: SIZES.icon,
       width: SIZES.icon,
       fill: COLORS.blue
     }
   };
+
   return (
     <div css={styles.container}>
       <h1 css={styles.title}>Your Library</h1>
-      <AddIcon {...styles.addIcon} />
+      <button type="button" css={styles.button} data-testid="add-button">
+        <AddIcon {...styles.addIcon} />
+      </button>
     </div>
   );
 };

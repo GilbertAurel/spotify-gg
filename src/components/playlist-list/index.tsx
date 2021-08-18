@@ -15,15 +15,16 @@ const PlaylistList: React.FC = () => {
       display: grid;
       grid-auto-rows: 4rem;
       gap: 1rem;
+      list-style: none;
     `
   };
 
   return (
-    <div css={styles.container}>
+    <ul css={styles.container}>
       {playlists.map((item) => (
         <PlaylistCard key={item.id} item={item} />
       ))}
-    </div>
+    </ul>
   );
 };
 

@@ -44,21 +44,23 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <Link
-      key={item.id}
-      css={styles.container}
-      to={`/library/${item.id}`}
-      role="presentation"
-      data-testid="playlist-button"
-    >
-      <img css={styles.image} src={item.image[0].url} alt="" />
-      <section css={styles.details}>
-        <p css={styles.title}>{item.name}</p>
-        <p css={styles.type}>
-          {item.type} &#183; {item.owner}
-        </p>
-      </section>
-    </Link>
+    <li>
+      <Link
+        key={item.id}
+        css={styles.container}
+        to={`/library/${item.id}`}
+        role="presentation"
+        data-testid="playlist-button"
+      >
+        <img css={styles.image} src={item.image[0].url} alt="" />
+        <section css={styles.details}>
+          <p css={styles.title}>{item.name}</p>
+          <p css={styles.type}>
+            {item.type} &#183; {item.owner}
+          </p>
+        </section>
+      </Link>
+    </li>
   );
 };
 
