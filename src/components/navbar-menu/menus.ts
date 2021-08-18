@@ -18,7 +18,7 @@ export const MENUS: MenuType[] = [
     name: 'Home',
     tag: 'home-button',
     Icon: HomeIcon,
-    path: '/Home'
+    path: '/home'
   },
   {
     name: 'Search',
