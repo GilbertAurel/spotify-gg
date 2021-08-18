@@ -19,7 +19,6 @@ const HomePage: React.FC = () => {
 
   const styles = {
     container: css`
-      padding-bottom: 5rem;
       display: grid;
       position: relative;
       grid-auto-rows: minmax(5rem, auto);

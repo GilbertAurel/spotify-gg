@@ -12,7 +12,7 @@ interface Props {
 const SongList: React.FC<Props> = ({ tracks }) => {
   const styles = {
     container: css`
-      padding: 0 10% 2rem 10%;
+      padding: 0 10%;
       display: grid;
       grid-auto-rows: 5rem;
       gap: 1rem;

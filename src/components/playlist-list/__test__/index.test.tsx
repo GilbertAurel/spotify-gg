@@ -38,5 +38,5 @@ it('should redirect user to new page with link', async () => {
   const playlistButton = await screen.findByTestId('playlist-button');
   fireEvent.click(playlistButton);
 
-  expect(history.location.pathname).toBe(`/playlist/${playlists[0].id}`);
+  expect(history.location.pathname).toBe(`/library/${playlists[0].id}`);
 });

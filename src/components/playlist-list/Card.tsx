@@ -33,7 +33,7 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
     <Link
       key={item.id}
       css={styles.container}
-      to={`/playlist/${item.id}`}
+      to={`/library/${item.id}`}
       role="presentation"
       data-testid="playlist-button"
     >

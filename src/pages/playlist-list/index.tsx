@@ -9,7 +9,7 @@ import PlaylistHeader from 'components/playlist-header';
 const PlaylistPage: React.FC = () => {
   const styles = {
     container: css`
-      min-height: 100vh;
+      flex: 1;
       position: relative;
       display: grid;
       gap: 1rem;
