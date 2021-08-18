@@ -12,8 +12,10 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   const styles = {
     container: css`
+      min-height: 100vh;
       width: 100vw;
-      display: grid;
+      display: flex;
+      flex-direction: column;
 
       @media (min-width: 480px) {
         width: 480px;
