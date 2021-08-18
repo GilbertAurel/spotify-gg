@@ -6,7 +6,7 @@ import SideMenu from '../index';
 
 const history = createMemoryHistory();
 const mockToggleMenu = jest.fn();
-const mockFirstMenu = '/playlists';
+const mockFirstMenu = '/library';
 const mockUser = {
   name: 'name',
   email: 'email',
@@ -15,14 +15,14 @@ const mockUser = {
 
 beforeEach(() => jest.spyOn(redux, 'useSelector').mockReturnValue(mockUser));
 
-it('should render close button shader, user profile, and 3 menus', () => {
+it('should render close button shader, user profile, and 2 menus', () => {
   render(<SideMenu toggleMenu={mockToggleMenu} />);
 
   expect(screen.getByTestId('close-menu-button')).toBeInTheDocument();
   expect(screen.getByTestId('user-image')).toBeInTheDocument();
   expect(screen.getByTestId('user-name')).toBeInTheDocument();
   expect(screen.getByTestId('user-email')).toBeInTheDocument();
-  expect(screen.getAllByTestId('menu-button')).toHaveLength(3);
+  expect(screen.getAllByTestId('menu-button')).toHaveLength(2);
 });
 
 it('close menu button should close toggle off the menu', () => {

@@ -1,5 +1,5 @@
 import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
-import { Logout, PlaylistIcon, SettingIcon } from 'assets/icons/components';
+import { LogoutIcon, SettingIcon } from 'assets/icons/components';
 
 export interface ButtonType {
   name: string;
@@ -9,18 +9,13 @@ export interface ButtonType {
 
 export const BUTTONS: ButtonType[] = [
   {
-    name: 'Playlist',
-    Icon: PlaylistIcon,
-    path: '/playlists'
-  },
-  {
     name: 'Settings',
     Icon: SettingIcon,
-    path: '/playlists'
+    path: '/library'
   },
   {
     name: 'Sign out',
-    Icon: Logout,
+    Icon: LogoutIcon,
     path: '/signout'
   }
 ];
