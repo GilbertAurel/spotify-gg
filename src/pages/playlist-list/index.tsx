@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/react';
 import React from 'react';
 import Layout from 'layout/PageWithMusicPlayer';
 import PlaylistList from 'components/playlist-list';
-import PlaylistHeader from 'components/playlist-list-header';
+import PlaylistHeader from 'components/playlist-header';
 
 const PlaylistPage: React.FC = () => {
   const styles = {
