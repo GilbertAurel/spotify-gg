@@ -9,10 +9,10 @@ import SearchBar from 'components/home-search-bar';
 import NewReleasesWidget from 'components/home-new-releases';
 import EditorPicksWidget from 'components/home-editor-picks';
 import SideMenu from 'components/side-menu';
-import { initialFetch } from 'utils/apis/initialCalls';
+import useFetchHomeData from 'utils/apis/useFetchHomeData';
 
 const HomePage: React.FC = () => {
-  const { loaded } = initialFetch();
+  const { loaded } = useFetchHomeData();
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggleMenuHandler = () => setToggleMenu(!toggleMenu);

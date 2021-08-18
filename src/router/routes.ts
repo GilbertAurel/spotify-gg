@@ -15,16 +15,16 @@ export const ROUTES: IRoutes[] = [
   {
     path: '/library/:id',
     exact: false,
-    component: lazy(() => import('pages/playlist-details'))
+    component: lazy(() => import('pages/library-tracks'))
   },
   {
     path: '/library',
     exact: true,
-    component: lazy(() => import('pages/playlist-list'))
+    component: lazy(() => import('pages/library'))
   },
   {
     path: '/search',
     exact: false,
-    component: lazy(() => import('pages/track-list'))
+    component: lazy(() => import('pages/search'))
   }
 ];

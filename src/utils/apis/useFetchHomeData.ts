@@ -15,7 +15,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-export const initialFetch = () => {
+export const initialHomeDataFetch = () => {
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -113,3 +113,5 @@ export const initialFetch = () => {
 
   return { loaded };
 };
+
+export default initialHomeDataFetch;
