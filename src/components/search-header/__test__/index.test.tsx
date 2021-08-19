@@ -5,5 +5,4 @@ it('should render search page header with search bar', () => {
   render(<SearchHeader />);
 
   expect(screen.getByTestId('header-label')).toBeInTheDocument();
-  expect(screen.getByTestId('search-bar')).toBeInTheDocument();
 });

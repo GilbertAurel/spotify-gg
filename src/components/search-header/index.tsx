@@ -1,21 +1,33 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
+import { COLORS, FONTS } from 'assets/theme';
+import SearchBar from 'components/search-bar';
 import React from 'react';
 
 const SearchHeader: React.FC = () => {
   const styles = {
-    container: css``
+    container: css`
+      display: grid;
+      grid-template-rows: 3rem 5rem;
+      box-shadow: 0px 2px 1px 1px rgba(0, 0, 255, 0.05);
+      background-color: ${COLORS.white};
+    `,
+    title: css`
+      align-self: flex-end;
+      margin: 0;
+      padding: 0 10%;
+      color: ${COLORS.primary};
+      ${FONTS.h2}
+    `
   };
 
   return (
     <div css={styles.container}>
-      <div>
-        <p data-testid="header-label">Search</p>
-        <form onSubmit={() => console.log('submit')}>
-          <input type="text" name="search" data-testid="search-bar" />
-        </form>
-      </div>
+      <h1 css={styles.title} data-testid="header-label">
+        Search
+      </h1>
+      <SearchBar />
     </div>
   );
 };

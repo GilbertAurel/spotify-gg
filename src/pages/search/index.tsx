@@ -12,11 +12,11 @@ const TrackListPage: React.FC = () => {
 
   const styles = {
     container: css`
-      min-height: 100vh;
+      flex: 1;
       position: relative;
       display: grid;
       gap: 1rem;
-      grid-template-rows: 5rem 1fr;
+      grid-template-rows: 8rem 1fr;
     `
   };
 
