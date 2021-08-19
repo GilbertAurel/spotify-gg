@@ -12,7 +12,7 @@ import SideMenu from 'components/side-menu';
 import useFetchHomeData from 'utils/apis/useFetchHomeData';
 
 const HomePage: React.FC = () => {
-  const { loaded } = useFetchHomeData();
+  const { loaded, error } = useFetchHomeData();
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggleMenuHandler = () => setToggleMenu(!toggleMenu);
@@ -25,22 +25,22 @@ const HomePage: React.FC = () => {
     `
   };
 
-  if (loaded) {
-    return (
-      <Layout>
-        <div css={styles.container}>
-          <HomeHeader toggleMenu={toggleMenuHandler} />
-          <SearchBar />
-          <HomeCarousel />
-          <NewReleasesWidget />
-          <EditorPicksWidget />
-          {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
-        </div>
-      </Layout>
-    );
-  }
+  if (error) return <div>something went wrong</div>;
 
-  return <div>loading..</div>;
+  if (!loaded) return <div>loading..</div>;
+
+  return (
+    <Layout>
+      <div css={styles.container}>
+        <HomeHeader toggleMenu={toggleMenuHandler} />
+        <SearchBar />
+        <HomeCarousel />
+        <NewReleasesWidget />
+        <EditorPicksWidget />
+        {toggleMenu && <SideMenu toggleMenu={toggleMenuHandler} />}
+      </div>
+    </Layout>
+  );
 };
 
 export default HomePage;

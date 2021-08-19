@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 
 export const initialHomeDataFetch = () => {
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -86,11 +87,13 @@ export const initialHomeDataFetch = () => {
         fetchUserData(token, expires),
         fetchNewReleases(token),
         fetchEditorPicks(token)
-      ]).then(() => setLoaded(true));
+      ])
+        .then(() => setLoaded(true))
+        .catch(() => setError(true));
     }
   }, []);
 
-  return { loaded };
+  return { error, loaded };
 };
 
 export default initialHomeDataFetch;
