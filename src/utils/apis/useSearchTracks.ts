@@ -1,18 +1,22 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { Track } from 'store/actions/payloads';
 import { RootState } from 'store/reducers';
 import { SEARCH_URL } from './endpoints';
 
 export const useSearchTracks = () => {
+  const changeSearch = useLocation().search;
   const token = useSelector((state: RootState) => state.user.token);
   const searchInput = new URLSearchParams(window.location.search).get('title');
   const [tracks, setTracks] = useState<Track[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
-  const fetchSearch = () =>
+  const fetchSearch = () => {
+    setLoaded(false);
+
     axios({
       method: 'GET',
       url: SEARCH_URL,
@@ -37,10 +41,9 @@ export const useSearchTracks = () => {
         setTracks(data);
       })
       .catch(() => setError(true));
+  };
 
   useEffect(() => {
-    setLoaded(false);
-
     if (searchInput) {
       fetchSearch();
       return setLoaded(true);
@@ -48,7 +51,7 @@ export const useSearchTracks = () => {
 
     setTracks([]);
     return setLoaded(true);
-  }, []);
+  }, [changeSearch]);
 
   return { loaded, tracks, error };
 };
