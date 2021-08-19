@@ -5,7 +5,7 @@ import { AddIcon } from 'assets/icons/components';
 import { COLORS, FONTS, SIZES } from 'assets/theme';
 import React from 'react';
 
-const PlaylistHeader: React.FC = () => {
+const LibraryHeader: React.FC = () => {
   const styles = {
     container: css`
       padding: 0 10%;
@@ -40,4 +40,4 @@ const PlaylistHeader: React.FC = () => {
   );
 };
 
-export default PlaylistHeader;
+export default LibraryHeader;
