@@ -9,7 +9,7 @@ interface Props {
   tracks: Track[];
 }
 
-const SongList: React.FC<Props> = ({ tracks }) => {
+const TrackList: React.FC<Props> = ({ tracks }) => {
   const styles = {
     container: css`
       padding: 0 10%;
@@ -28,4 +28,4 @@ const SongList: React.FC<Props> = ({ tracks }) => {
   );
 };
 
-export default SongList;
+export default TrackList;

@@ -5,8 +5,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
 import Layout from 'layout/PageWithMusicPlayer';
-import SongList from 'components/tracks-list';
-import SongListHeader from 'components/tracks-header';
+import TrackList from 'components/tracks-list';
+import TracksHeader from 'components/tracks-header';
 import usePlaylistTrack from 'utils/apis/usePlaylistTrack';
 
 const PlaylistPage: React.FC = () => {
@@ -30,8 +30,8 @@ const PlaylistPage: React.FC = () => {
   return (
     <Layout>
       <div css={styles.container}>
-        <SongListHeader playlist={playlist} />
-        <SongList tracks={tracks} />
+        <TracksHeader playlist={playlist} />
+        <TrackList tracks={tracks} />
       </div>
     </Layout>
   );

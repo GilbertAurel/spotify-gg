@@ -9,7 +9,7 @@ interface Props {
   playlist?: Playlists;
 }
 
-const SongListHeader: React.FC<Props> = ({ playlist }) => {
+const TracksHeader: React.FC<Props> = ({ playlist }) => {
   const styles = {
     container: css`
       padding: 0 10%;
@@ -72,4 +72,4 @@ const SongListHeader: React.FC<Props> = ({ playlist }) => {
   );
 };
 
-export default SongListHeader;
+export default TracksHeader;

@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import { Track } from 'store/actions/payloads';
-import SongList from '../index';
+import TrackList from '../index';
 
 const mockTracks: Track[] = [
   {
@@ -13,6 +13,6 @@ const mockTracks: Track[] = [
 ];
 
 it('list should render one song card', () => {
-  render(<SongList tracks={mockTracks} />);
+  render(<TrackList tracks={mockTracks} />);
   expect(screen.queryAllByRole('img')).toHaveLength(1);
 });
