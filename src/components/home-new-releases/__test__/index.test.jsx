@@ -14,6 +14,7 @@ const tracks = [
 
 it('should render new releases widget', async () => {
   jest.spyOn(redux, 'useSelector').mockReturnValue(tracks);
+  jest.spyOn(redux, 'useDispatch').mockImplementation(() => jest.fn());
   render(<NewReleases />);
 
   expect(await screen.findAllByRole('img')).toHaveLength(1);
