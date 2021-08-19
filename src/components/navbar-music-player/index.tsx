@@ -4,9 +4,9 @@ import { css, jsx } from '@emotion/react';
 import React from 'react';
 import { COLORS } from 'assets/theme';
 import Navbar from 'components/navbar-menu';
-import PlayerDetails from './details';
-import PlayerButtons from './buttons';
-import PlayerTracker from './tracker';
+import PlayerDetails from './Details';
+import PlayerButtons from './Buttons';
+import PlayerTracker from './Tracker';
 
 const NavbarMusicPlayer: React.FC = () => {
   const styles = {
