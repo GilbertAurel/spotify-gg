@@ -26,7 +26,7 @@ const initialState: State = {
   tracks: [],
   selectedTrack: {
     artist: '',
-    images: [],
+    images: [{ url: '' }],
     name: '',
     uri: '',
     duration: ''

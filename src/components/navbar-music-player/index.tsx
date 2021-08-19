@@ -25,6 +25,7 @@ const NavbarMusicPlayer: React.FC = () => {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      gap: 0.2rem;
       background-color: ${COLORS.lightblue};
       border-radius: 0.5rem;
     `

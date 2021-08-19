@@ -3,6 +3,8 @@
 import { css, jsx } from '@emotion/react';
 import { COLORS, FONTS } from 'assets/theme';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setSelectedTrack } from 'store/action-creators';
 import { Track } from 'store/actions/payloads';
 
 interface Props {
@@ -10,12 +12,24 @@ interface Props {
 }
 
 const TrackCard: React.FC<Props> = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const selectTrackHandler = () => {
+    dispatch(setSelectedTrack(item));
+  };
+
   const styles = {
     container: css`
+      overflow: hidden;
+    `,
+    button: css`
+      width: 100%;
       display: flex;
       align-items: center;
       gap: 1rem;
-      overflow: hidden;
+      background-color: transparent;
+      border: none;
+      text-align: unset;
     `,
     image: css`
       height: 3rem;
@@ -48,11 +62,13 @@ const TrackCard: React.FC<Props> = ({ item }) => {
 
   return (
     <li css={styles.container}>
-      <img css={styles.image} src={item.images[2].url} alt="" />
-      <div css={styles.details}>
-        <p css={styles.title}>{item.name}</p>
-        <p css={styles.artist}>{item.artist}</p>
-      </div>
+      <button type="button" css={styles.button} onClick={selectTrackHandler}>
+        <img css={styles.image} src={item.images[2].url} alt="" />
+        <div css={styles.details}>
+          <p css={styles.title}>{item.name}</p>
+          <p css={styles.artist}>{item.artist}</p>
+        </div>
+      </button>
     </li>
   );
 };

@@ -16,6 +16,7 @@ const TrackList: React.FC<Props> = ({ tracks }) => {
       display: grid;
       grid-auto-rows: 3rem;
       gap: 1rem;
+      list-style: none;
     `
   };
 
