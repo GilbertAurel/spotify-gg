@@ -1,5 +1,5 @@
 import { cleanup, render, screen, fireEvent } from '@testing-library/react';
-import PlaylistList from '../index';
+import LibraryList from '../index';
 import * as redux from 'react-redux';
 import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
@@ -24,7 +24,7 @@ afterAll(cleanup);
 it('should render playlist lists', async () => {
   render(
     <Router history={history}>
-      <PlaylistList />
+      <LibraryList formState={true} />
     </Router>
   );
 
@@ -34,7 +34,7 @@ it('should render playlist lists', async () => {
 it('should redirect user to new page with link', async () => {
   render(
     <Router history={history}>
-      <PlaylistList />
+      <LibraryList formState={true} />
     </Router>
   );
 

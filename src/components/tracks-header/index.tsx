@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
+import { Vinyl } from 'assets/images';
 import { COLORS, FONTS } from 'assets/theme';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -59,7 +60,7 @@ const TracksHeader: React.FC = () => {
     <div css={styles.container}>
       <img
         css={styles.image}
-        src={playlist?.image[0].url}
+        src={playlist?.image[0] ? playlist?.image[0].url : Vinyl}
         alt=""
         data-testid="image"
       />

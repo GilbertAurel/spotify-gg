@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
+import { Vinyl } from 'assets/images';
 import { COLORS, FONTS } from 'assets/theme';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -64,7 +65,11 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
         onClick={redirectHandler}
         data-testid="playlist-button"
       >
-        <img css={styles.image} src={item.image[0].url} alt="" />
+        <img
+          css={styles.image}
+          src={item.image[0] ? item.image[0].url : Vinyl}
+          alt=""
+        />
         <section css={styles.details}>
           <p css={styles.title}>{item.name}</p>
           <p css={styles.type}>

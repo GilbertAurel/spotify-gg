@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from 'layout/PageWithMusicPlayer';
 import LibraryList from 'components/library-list';
 import LibraryHeader from 'components/library-header';
@@ -9,6 +9,10 @@ import usePlaylists from 'utils/apis/usePlaylists';
 
 const PlaylistPage: React.FC = () => {
   const { error, loaded } = usePlaylists();
+  const [toggleForm, setToggleForm] = useState(false);
+
+  const toggleFormHandler = () => setToggleForm(!toggleForm);
+
   const styles = {
     container: css`
       flex: 1;
@@ -26,8 +30,8 @@ const PlaylistPage: React.FC = () => {
   return (
     <Layout>
       <div css={styles.container}>
-        <LibraryHeader />
-        <LibraryList />
+        <LibraryHeader toggleHandler={toggleFormHandler} />
+        <LibraryList formState={toggleForm} />
       </div>
     </Layout>
   );

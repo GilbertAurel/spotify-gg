@@ -5,8 +5,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
 import PlaylistCard from './Card';
+import NewPlaylistForm from './Form';
 
-const PlaylistList: React.FC = () => {
+interface Props {
+  formState: boolean;
+}
+
+const LibraryList: React.FC<Props> = ({ formState }) => {
   const playlists = useSelector((state: RootState) => state.playlist.playlists);
 
   const styles = {
@@ -21,6 +26,7 @@ const PlaylistList: React.FC = () => {
 
   return (
     <ul css={styles.container}>
+      {formState && <NewPlaylistForm />}
       {playlists.map((item) => (
         <PlaylistCard key={item.id} item={item} />
       ))}
@@ -28,4 +34,4 @@ const PlaylistList: React.FC = () => {
   );
 };
 
-export default PlaylistList;
+export default LibraryList;

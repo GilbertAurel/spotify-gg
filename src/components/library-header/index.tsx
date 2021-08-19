@@ -5,7 +5,11 @@ import { AddIcon } from 'assets/icons/components';
 import { COLORS, FONTS, SIZES } from 'assets/theme';
 import React from 'react';
 
-const LibraryHeader: React.FC = () => {
+interface Props {
+  toggleHandler: () => void;
+}
+
+const LibraryHeader: React.FC<Props> = ({ toggleHandler }) => {
   const styles = {
     container: css`
       padding: 0 10%;
@@ -33,7 +37,12 @@ const LibraryHeader: React.FC = () => {
   return (
     <div css={styles.container}>
       <h1 css={styles.title}>Your Library</h1>
-      <button type="button" css={styles.button} data-testid="add-button">
+      <button
+        type="button"
+        css={styles.button}
+        onClick={toggleHandler}
+        data-testid="add-button"
+      >
         <AddIcon {...styles.addIcon} />
       </button>
     </div>
