@@ -46,7 +46,6 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
   return (
     <li>
       <Link
-        key={item.id}
         css={styles.container}
         to={`/library/${item.id}`}
         role="presentation"
