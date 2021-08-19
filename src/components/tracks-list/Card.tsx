@@ -9,13 +9,13 @@ interface Props {
   item: Track;
 }
 
-const SongCard: React.FC<Props> = ({ item }) => {
+const TrackCard: React.FC<Props> = ({ item }) => {
   const styles = {
     container: css`
       display: flex;
       align-items: center;
       gap: 1rem;
-      text-decoration: none;
+      overflow: hidden;
     `,
     image: css`
       height: 3rem;
@@ -24,16 +24,23 @@ const SongCard: React.FC<Props> = ({ item }) => {
     `,
     details: css`
       flex: 1;
+      overflow: hidden;
     `,
     title: css`
       margin: 0 0 0.2rem 0;
       padding: 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       color: ${COLORS.primary};
       ${FONTS.p}
     `,
     artist: css`
       margin: 0;
       padding: 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       color: ${COLORS.blue};
       ${FONTS.p}
     `
@@ -42,12 +49,12 @@ const SongCard: React.FC<Props> = ({ item }) => {
   return (
     <li css={styles.container}>
       <img css={styles.image} src={item.images[2].url} alt="" />
-      <section css={styles.details}>
-        <p css={styles.title}>{item.name.substring(0, 30)}..</p>
+      <div css={styles.details}>
+        <p css={styles.title}>{item.name}</p>
         <p css={styles.artist}>{item.artist}</p>
-      </section>
+      </div>
     </li>
   );
 };
 
-export default SongCard;
+export default TrackCard;

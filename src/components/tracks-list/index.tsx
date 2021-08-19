@@ -3,7 +3,7 @@
 import { css, jsx } from '@emotion/react';
 import React from 'react';
 import { Track } from 'store/actions/payloads';
-import SongCard from './Card';
+import TrackCard from './Card';
 
 interface Props {
   tracks: Track[];
@@ -22,7 +22,7 @@ const SongList: React.FC<Props> = ({ tracks }) => {
   return (
     <ul css={styles.container}>
       {tracks.map((item: Track) => (
-        <SongCard key={item.uri} item={item} />
+        <TrackCard key={item.uri} item={item} />
       ))}
     </ul>
   );
