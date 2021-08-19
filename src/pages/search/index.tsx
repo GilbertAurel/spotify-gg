@@ -1,9 +1,11 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import SongList from 'components/tracks-list';
+import TrackList from 'components/tracks-list';
 import React from 'react';
 import { useSearchTracks } from 'utils/apis/useSearchTracks';
+import Layout from 'layout/PageWithMusicPlayer';
+import SearchHeader from 'components/search-header';
 
 const TrackListPage: React.FC = () => {
   const { tracks, loaded, error } = useSearchTracks();
@@ -22,12 +24,13 @@ const TrackListPage: React.FC = () => {
 
   if (!loaded) return <h1 data-testid="loading">loading..</h1>;
 
-  // TODO: ADD STYLE AND CONNECTING COMPONENTS
-
   return (
-    <div css={styles.container}>
-      <SongList tracks={tracks} />
-    </div>
+    <Layout>
+      <div css={styles.container}>
+        <SearchHeader />
+        {tracks.length > 0 ? <TrackList tracks={tracks} /> : <p>empty list</p>}
+      </div>
+    </Layout>
   );
 };
 

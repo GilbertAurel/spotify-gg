@@ -4,6 +4,10 @@ import * as redux from 'react-redux';
 import { SEARCH_URL } from 'utils/apis/endpoints';
 import TrackListPage from '../index';
 import { server } from 'utils/test/serverHandlers';
+import { Router } from 'react-router';
+import { createMemoryHistory } from 'history';
+
+const history = createMemoryHistory();
 
 beforeAll(() => server.listen());
 beforeEach(() => {
@@ -14,7 +18,11 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 it('should render loading item and error alert item not found', async () => {
-  render(<TrackListPage />);
+  render(
+    <Router history={history}>
+      <TrackListPage />
+    </Router>
+  );
 
   await waitFor(() =>
     server.use(

@@ -12,9 +12,7 @@ export const useSearchTracks = () => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    setLoaded(false);
-
+  const fetchSearch = () =>
     axios({
       method: 'GET',
       url: SEARCH_URL,
@@ -40,7 +38,16 @@ export const useSearchTracks = () => {
       })
       .catch(() => setError(true));
 
-    setLoaded(true);
+  useEffect(() => {
+    setLoaded(false);
+
+    if (searchInput) {
+      fetchSearch();
+      return setLoaded(true);
+    }
+
+    setTracks([]);
+    return setLoaded(true);
   }, []);
 
   return { loaded, tracks, error };
