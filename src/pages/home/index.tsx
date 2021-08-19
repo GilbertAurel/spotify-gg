@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Layout from 'layout/PageWithMusicPlayer';
 import HomeCarousel from 'components/home-carousel';
 import HomeHeader from 'components/home-header';
-import SearchBar from 'components/home-search-bar';
+import SearchBar from 'components/search-bar';
 import NewReleasesWidget from 'components/home-new-releases';
 import EditorPicksWidget from 'components/home-editor-picks';
 import SideMenu from 'components/side-menu';
