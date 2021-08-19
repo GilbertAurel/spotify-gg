@@ -3,13 +3,18 @@
 import { css, jsx } from '@emotion/react';
 import { COLORS, FONTS } from 'assets/theme';
 import React from 'react';
-import { Playlists } from 'store/actions/payloads';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/reducers';
 
-interface Props {
-  playlist?: Playlists;
-}
+const TracksHeader: React.FC = () => {
+  const playlist = useSelector(
+    (state: RootState) => state.playlist.selectedPlaylist
+  );
+  const description =
+    playlist?.description.length < 50
+      ? playlist?.description
+      : `${playlist?.description.split('').splice(0, 50).join('')}..`;
 
-const TracksHeader: React.FC<Props> = ({ playlist }) => {
   const styles = {
     container: css`
       padding: 0 10%;
@@ -49,6 +54,7 @@ const TracksHeader: React.FC<Props> = ({ playlist }) => {
       ${FONTS.p}
     `
   };
+
   return (
     <div css={styles.container}>
       <img
@@ -65,7 +71,7 @@ const TracksHeader: React.FC<Props> = ({ playlist }) => {
           {playlist?.type} &#183; {playlist?.owner}
         </p>
         <p css={styles.description} data-testid="description">
-          {playlist?.description.substring(0, 50)}..
+          {description}
         </p>
       </section>
     </div>

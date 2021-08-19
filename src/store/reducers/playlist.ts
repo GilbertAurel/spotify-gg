@@ -6,6 +6,7 @@ type State = {
   newReleases: Track[];
   editorPicks: EditorPicks[];
   playlists: Playlists[];
+  selectedPlaylist: Playlists;
   tracks: Track[];
 };
 
@@ -13,6 +14,14 @@ const initialState: State = {
   newReleases: [],
   editorPicks: [],
   playlists: [],
+  selectedPlaylist: {
+    name: '',
+    description: '',
+    id: '',
+    image: [],
+    owner: '',
+    type: ''
+  },
   tracks: []
 };
 
@@ -37,6 +46,11 @@ const playlistReducer = (state = initialState, action: Actions) => {
       return {
         ...state,
         tracks: action.payload
+      };
+    case ActionTypes.SET_SELECTED_PLAYLIST:
+      return {
+        ...state,
+        selectedPlaylist: action.payload
       };
     default:
       return state;

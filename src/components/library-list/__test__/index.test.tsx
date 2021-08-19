@@ -15,7 +15,10 @@ const playlists = [
 
 const history = createMemoryHistory();
 
-beforeEach(() => jest.spyOn(redux, 'useSelector').mockReturnValue(playlists));
+beforeEach(() => {
+  jest.spyOn(redux, 'useSelector').mockReturnValue(playlists);
+  jest.spyOn(redux, 'useDispatch').mockImplementation(() => jest.fn());
+});
 afterAll(cleanup);
 
 it('should render playlist lists', async () => {

@@ -3,7 +3,9 @@
 import { css, jsx } from '@emotion/react';
 import { COLORS, FONTS } from 'assets/theme';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { setSelectedPlaylists } from 'store/action-creators';
 import { Playlists } from 'store/actions/payloads';
 
 interface Props {
@@ -11,12 +13,18 @@ interface Props {
 }
 
 const PlaylistCard: React.FC<Props> = ({ item }) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const styles = {
-    container: css`
+    button: css`
       display: flex;
       align-items: center;
       gap: 1rem;
+      text-align: unset;
       text-decoration: none;
+      background-color: transparent;
+      border: none;
     `,
     image: css`
       height: 3.5rem;
@@ -43,12 +51,17 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
     `
   };
 
+  const redirectHandler = () => {
+    dispatch(setSelectedPlaylists(item));
+    history.push({ pathname: `/library/${item.id}` });
+  };
+
   return (
     <li>
-      <Link
-        css={styles.container}
-        to={`/library/${item.id}`}
-        role="presentation"
+      <button
+        type="button"
+        css={styles.button}
+        onClick={redirectHandler}
         data-testid="playlist-button"
       >
         <img css={styles.image} src={item.image[0].url} alt="" />
@@ -58,7 +71,7 @@ const PlaylistCard: React.FC<Props> = ({ item }) => {
             {item.type} &#183; {item.owner}
           </p>
         </section>
-      </Link>
+      </button>
     </li>
   );
 };

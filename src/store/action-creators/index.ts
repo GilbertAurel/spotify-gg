@@ -36,6 +36,14 @@ export const setPlaylists =
     });
   };
 
+export const setSelectedPlaylists =
+  (playlist: Playlists) => (dispatch: DispatchType) => {
+    dispatch({
+      type: ActionTypes.SET_SELECTED_PLAYLIST,
+      payload: playlist
+    });
+  };
+
 export const setPlaylistTracks =
   (tracks: Track[]) => (dispatch: DispatchType) => {
     dispatch({

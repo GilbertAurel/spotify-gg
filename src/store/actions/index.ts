@@ -25,6 +25,11 @@ interface PlaylistsAction {
   payload: Playlists[];
 }
 
+interface SelectedPlaylistsAction {
+  type: ActionTypes.SET_SELECTED_PLAYLIST;
+  payload: Playlists;
+}
+
 interface PlaylistTracksAction {
   type: ActionTypes.SET_PLAYLIST_TRACKS;
   payload: Track[];
@@ -35,4 +40,5 @@ export type Actions =
   | NewReleasesAction
   | EditorPicksAction
   | PlaylistsAction
+  | SelectedPlaylistsAction
   | PlaylistTracksAction;

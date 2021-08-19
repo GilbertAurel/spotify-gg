@@ -10,7 +10,7 @@ import TracksHeader from 'components/tracks-header';
 import usePlaylistTrack from 'utils/apis/usePlaylistTrack';
 
 const PlaylistPage: React.FC = () => {
-  const { playlist, loaded, error } = usePlaylistTrack();
+  const { loaded, error } = usePlaylistTrack();
   const tracks = useSelector((state: RootState) => state.playlist.tracks);
 
   const styles = {
@@ -30,7 +30,7 @@ const PlaylistPage: React.FC = () => {
   return (
     <Layout>
       <div css={styles.container}>
-        <TracksHeader playlist={playlist} />
+        <TracksHeader />
         <TrackList tracks={tracks} />
       </div>
     </Layout>
