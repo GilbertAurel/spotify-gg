@@ -24,6 +24,7 @@ const Navbar: React.FC = () => {
       align-items: center;
       background-color: ${COLORS.white};
       list-style: none;
+      box-shadow: 0px -2px 1px 1px rgba(0, 0, 255, 0.05);
     `
   };
 
