@@ -3,14 +3,12 @@ import axios from 'axios';
 import {
   EDITOR_PICKS_URL,
   NEW_RELEASES_URL,
-  PLAYLIST_URL,
   USER_DATA_URL
 } from 'utils/apis/endpoints';
 import {
   setEditorPicks,
   setLoginData,
-  setNewReleases,
-  setPlaylists
+  setNewReleases
 } from 'store/action-creators';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -79,26 +77,6 @@ export const initialHomeDataFetch = () => {
       dispatch(setEditorPicks(data));
     });
 
-  const fetchPlaylist = (token: string) =>
-    axios({
-      method: 'GET',
-      url: PLAYLIST_URL,
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((res) => {
-      const data = res.data.items.map((item: any) => ({
-        name: item.name,
-        image: item.images,
-        id: item.id,
-        owner: item.owner.display_name,
-        type: item.type,
-        description: item.description
-      }));
-
-      dispatch(setPlaylists(data));
-    });
-
   useEffect(() => {
     const expires = window.localStorage.getItem('expires');
     const token = window.localStorage.getItem('token');
@@ -107,8 +85,7 @@ export const initialHomeDataFetch = () => {
       Promise.all([
         fetchUserData(token, expires),
         fetchNewReleases(token),
-        fetchEditorPicks(token),
-        fetchPlaylist(token)
+        fetchEditorPicks(token)
       ]).then(() => setLoaded(true));
     }
   }, []);
