@@ -8,6 +8,7 @@ type State = {
   playlists: Playlists[];
   selectedPlaylist: Playlists;
   tracks: Track[];
+  selectedTrack: Track;
 };
 
 const initialState: State = {
@@ -22,7 +23,14 @@ const initialState: State = {
     owner: '',
     type: ''
   },
-  tracks: []
+  tracks: [],
+  selectedTrack: {
+    artist: '',
+    images: [],
+    name: '',
+    uri: '',
+    duration: ''
+  }
 };
 
 const playlistReducer = (state = initialState, action: Actions) => {
@@ -51,6 +59,11 @@ const playlistReducer = (state = initialState, action: Actions) => {
       return {
         ...state,
         selectedPlaylist: action.payload
+      };
+    case ActionTypes.SET_SELECTED_TRACK:
+      return {
+        ...state,
+        selectedTrack: action.payload
       };
     default:
       return state;
