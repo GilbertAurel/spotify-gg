@@ -9,7 +9,9 @@ import { Playlists } from 'store/actions/payloads';
 
 const usePlaylistTrack = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state: RootState) => state.user.token);
+  const token =
+    useSelector((state: RootState) => state.user.token) ||
+    window.localStorage.getItem('token');
   const playlists = useSelector((state: RootState) => state.playlist.playlists);
   const playlistId = useLocation().pathname.split('/')[2];
   const [loaded, setLoaded] = useState(false);

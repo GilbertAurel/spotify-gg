@@ -8,7 +8,9 @@ import { SEARCH_URL } from './endpoints';
 
 export const useSearchTracks = () => {
   const changeSearch = useLocation().search;
-  const token = useSelector((state: RootState) => state.user.token);
+  const token =
+    useSelector((state: RootState) => state.user.token) ||
+    window.localStorage.getItem('token');
   const searchInput = new URLSearchParams(window.location.search).get('title');
   const [tracks, setTracks] = useState<Track[]>([]);
   const [loaded, setLoaded] = useState(false);
