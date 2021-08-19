@@ -19,9 +19,7 @@ const LoginPage: React.FC = () => {
     }
   }, []);
 
-  const loginHandler = () => {
-    window.location.href = LOGIN_URL;
-  };
+  const loginHandler = () => window.location.replace(LOGIN_URL);
 
   const styles = {
     container: css`
