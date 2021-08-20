@@ -4,6 +4,7 @@ export { default as ForwardIcon } from './ForwardIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as ListIcon } from './ListIcon';
 export { default as LogoutIcon } from './LogoutIcon';
+export { default as MenuBulletIcon } from './MenuBulletIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as PlayIcon } from './PlayIcon';
 export { default as PlaylistIcon } from './PlaylistIcon';
