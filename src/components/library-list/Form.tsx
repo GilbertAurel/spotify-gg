@@ -8,6 +8,7 @@ import { RootState } from 'store/reducers';
 import { useHistory } from 'react-router-dom';
 import useForm from 'utils/helpers/useForm';
 import { CREATE_NEW_PLAYLIST } from 'utils/apis/endpoints';
+import { COLORS, FONTS } from 'assets/theme';
 
 const initialFormData = {
   title: '',
@@ -46,15 +47,50 @@ const NewPlaylistForm: React.FC = () => {
   };
 
   const styles = {
-    container: css``
+    container: css`
+      grid-row: span 2;
+    `,
+    innerContainer: css`
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      button {
+        display: none;
+      }
+    `,
+    title: css`
+      margin: 0;
+      padding: 0;
+      color: ${COLORS.primary};
+      ${FONTS.h2}
+    `,
+    input: css`
+      width: 100%;
+      padding: 0.6rem 1rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 1rem;
+      background-color: ${COLORS.lightgray};
+      color: ${COLORS.placeholder};
+      ${FONTS.p}
+
+      :focus {
+        outline: none;
+      }
+    `
   };
 
   return (
     <li css={styles.container}>
-      <form onSubmit={submitHanlder}>
+      <form css={styles.innerContainer} onSubmit={submitHanlder}>
+        <p css={styles.title}>Create new playlist</p>
         <input
           type="text"
           name="title"
+          css={styles.input}
           value={value.title}
           onChange={inputChangeHandler}
           placeholder="playlist name"
@@ -62,6 +98,7 @@ const NewPlaylistForm: React.FC = () => {
         <input
           type="text"
           name="description"
+          css={styles.input}
           value={value.description}
           onChange={inputChangeHandler}
           placeholder="description"
