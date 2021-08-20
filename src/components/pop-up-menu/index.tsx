@@ -24,8 +24,6 @@ const PopUpMenu: React.FC = () => {
 
   const togglePlaylistHandler = () => setTogglePlaylists(!togglePlaylists);
 
-  const shareSongHandler = () => alert('function not available');
-
   const styles = {
     container: css`
       height: 100%;
@@ -70,11 +68,7 @@ const PopUpMenu: React.FC = () => {
             Icon={AddIcon}
             clickHandler={togglePlaylistHandler}
           />
-          <MenuButton
-            label="Share"
-            Icon={LogoutIcon}
-            clickHandler={shareSongHandler}
-          />
+          <MenuButton label="Share" Icon={LogoutIcon} />
         </div>
       ) : (
         <PlaylistList toggleHandler={togglePlaylistHandler} uri={track.uri} />

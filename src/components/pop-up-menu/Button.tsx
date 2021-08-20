@@ -7,7 +7,7 @@ import React from 'react';
 
 interface Props {
   label: string;
-  clickHandler: () => void;
+  clickHandler?: () => void;
   Icon: (props: React.SVGProps<SVGSVGElement>) => EmotionJSX.Element;
 }
 
