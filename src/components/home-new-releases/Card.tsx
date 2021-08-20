@@ -27,6 +27,7 @@ const SongCard: React.FC<Props> = ({ track }) => {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      text-align: unset;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
