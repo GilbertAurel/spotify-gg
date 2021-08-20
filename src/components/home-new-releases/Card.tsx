@@ -44,6 +44,7 @@ const SongCard: React.FC<Props> = ({ track }) => {
       object-fit: cover;
     `,
     title: css`
+      width: 100%;
       margin: 0;
       padding: 0;
       text-overflow: ellipsis;
@@ -53,6 +54,7 @@ const SongCard: React.FC<Props> = ({ track }) => {
       ${FONTS.p}
     `,
     artist: css`
+      width: 100%;
       margin: 0;
       padding: 0;
       text-overflow: ellipsis;
