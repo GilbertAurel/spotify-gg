@@ -5,7 +5,7 @@ import { MenuBulletIcon } from 'assets/icons/components';
 import { COLORS, FONTS, SIZES } from 'assets/theme';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setSelectedTrack } from 'store/action-creators';
+import { openTrackMenu, setSelectedTrack } from 'store/action-creators';
 import { Track } from 'store/actions/payloads';
 
 interface Props {
@@ -19,7 +19,7 @@ const TrackCard: React.FC<Props> = ({ item }) => {
     dispatch(setSelectedTrack(item));
   };
 
-  const toggleMenu = () => console.log(item.uri);
+  const toggleMenu = () => dispatch(openTrackMenu(item));
 
   const styles = {
     container: css`

@@ -32,5 +32,8 @@ export const PLAYLIST_TRACKS_URL = (id: string) =>
 
 export const SEARCH_URL = 'https://api.spotify.com/v1/search';
 
-export const CREATE_NEW_PLAYLIST = (id: string) =>
+export const CREATE_NEW_PLAYLIST_URL = (id: string) =>
   `https://api.spotify.com/v1/users/${id}/playlists`;
+
+export const ADD_TO_PLAYLIST_URL = (id: string) =>
+  `https://api.spotify.com/v1/playlists/${id}/tracks`;

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
 import { useHistory } from 'react-router-dom';
 import useForm from 'utils/helpers/useForm';
-import { CREATE_NEW_PLAYLIST } from 'utils/apis/endpoints';
+import { CREATE_NEW_PLAYLIST_URL } from 'utils/apis/endpoints';
 import { COLORS, FONTS } from 'assets/theme';
 
 const initialFormData = {
@@ -41,7 +41,7 @@ const NewPlaylistForm: React.FC = () => {
       };
 
       axios
-        .post(CREATE_NEW_PLAYLIST(user.id), newPlaylist, config)
+        .post(CREATE_NEW_PLAYLIST_URL(user.id), newPlaylist, config)
         .then((res) => history.push({ pathname: `/library/${res.data.id}` }));
     }
   };

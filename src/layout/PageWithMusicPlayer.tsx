@@ -3,13 +3,18 @@
 import { css, jsx } from '@emotion/react';
 import { COLORS } from 'assets/theme';
 import NavbarMusicPlayer from 'components/navbar-music-player';
+import PopUpMenu from 'components/pop-up-menu';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/reducers';
 
 interface Props {
   children?: React.ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
+  const openMenu = useSelector((state: RootState) => state.playlist.openMenu);
+
   const styles = {
     container: css`
       min-height: 100vh;
@@ -30,6 +35,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div css={styles.container}>
       {children}
       <NavbarMusicPlayer />
+      {openMenu.name && <PopUpMenu />}
     </div>
   );
 };

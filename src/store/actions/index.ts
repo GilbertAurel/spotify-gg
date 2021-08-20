@@ -35,6 +35,15 @@ interface SelectedTrackAction {
   payload: Track;
 }
 
+interface OpenTrackMenu {
+  type: ActionTypes.SET_TRACK_MENU;
+  payload: Track;
+}
+
+interface CloseTrackMenu {
+  type: ActionTypes.RESET_TRACK_MENU;
+}
+
 interface PlaylistTracksAction {
   type: ActionTypes.SET_PLAYLIST_TRACKS;
   payload: Track[];
@@ -47,4 +56,6 @@ export type Actions =
   | PlaylistsAction
   | SelectedPlaylistsAction
   | SelectedTrackAction
+  | OpenTrackMenu
+  | CloseTrackMenu
   | PlaylistTracksAction;

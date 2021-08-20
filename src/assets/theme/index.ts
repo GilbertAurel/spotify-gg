@@ -8,6 +8,7 @@ export const COLORS = {
   lightblue: '#E1F5F6',
   lightgray: '#FAFAFA',
   white: '#FFFFFF',
+  red: '#FF0000',
 
   frostedWhite: 'rgba(191, 191, 191, 0.6)',
   placeholder: '#5BA3B3'

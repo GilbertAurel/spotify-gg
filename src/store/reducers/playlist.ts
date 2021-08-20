@@ -9,6 +9,7 @@ type State = {
   selectedPlaylist: Playlists;
   tracks: Track[];
   selectedTrack: Track;
+  openMenu: Track;
 };
 
 const initialState: State = {
@@ -25,6 +26,13 @@ const initialState: State = {
   },
   tracks: [],
   selectedTrack: {
+    artist: '',
+    images: [{ url: '' }],
+    name: '',
+    uri: '',
+    duration: ''
+  },
+  openMenu: {
     artist: '',
     images: [{ url: '' }],
     name: '',
@@ -64,6 +72,16 @@ const playlistReducer = (state = initialState, action: Actions) => {
       return {
         ...state,
         selectedTrack: action.payload
+      };
+    case ActionTypes.SET_TRACK_MENU:
+      return {
+        ...state,
+        openMenu: action.payload
+      };
+    case ActionTypes.RESET_TRACK_MENU:
+      return {
+        ...state,
+        openMenu: initialState.openMenu
       };
     default:
       return state;

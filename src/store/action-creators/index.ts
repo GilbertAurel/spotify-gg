@@ -51,6 +51,19 @@ export const setSelectedTrack = (track: Track) => (dispatch: DispatchType) => {
   });
 };
 
+export const openTrackMenu = (track: Track) => (dispatch: DispatchType) => {
+  dispatch({
+    type: ActionTypes.SET_TRACK_MENU,
+    payload: track
+  });
+};
+
+export const closeTrackMenu = () => (dispatch: DispatchType) => {
+  dispatch({
+    type: ActionTypes.RESET_TRACK_MENU
+  });
+};
+
 export const setPlaylistTracks =
   (tracks: Track[]) => (dispatch: DispatchType) => {
     dispatch({
