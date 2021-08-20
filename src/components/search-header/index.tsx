@@ -14,6 +14,7 @@ const SearchHeader: React.FC = () => {
       grid-template-rows: 3rem 5rem;
       box-shadow: 0px 2px 1px 1px rgba(0, 0, 255, 0.05);
       background-color: ${COLORS.white};
+      z-index: 10;
     `,
     title: css`
       align-self: flex-end;

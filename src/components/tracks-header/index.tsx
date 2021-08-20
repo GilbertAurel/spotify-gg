@@ -26,6 +26,7 @@ const TracksHeader: React.FC = () => {
       gap: 1rem;
       box-shadow: 0px 2px 1px 1px rgba(0, 0, 255, 0.05);
       background-color: ${COLORS.white};
+      z-index: 10;
     `,
     image: css`
       height: 8rem;
