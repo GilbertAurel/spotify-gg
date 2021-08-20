@@ -47,6 +47,10 @@ const SearchBar: React.FC = () => {
       background-color: ${COLORS.lightgray};
       color: ${COLORS.placeholder};
       ${FONTS.p}
+
+      :focus {
+        outline: none;
+      }
     `,
     submitButton: css`
       display: none;
