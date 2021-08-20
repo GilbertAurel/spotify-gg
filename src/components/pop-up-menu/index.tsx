@@ -35,6 +35,12 @@ const PopUpMenu: React.FC = () => {
       flex-direction: column;
       background: linear-gradient(transparent -80%, rgba(255, 255, 255, 1) 50%);
       z-index: 30;
+
+      @media (min-width: 480px) {
+        width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     `,
     closeButton: css`
       flex: 1;
