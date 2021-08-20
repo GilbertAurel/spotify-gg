@@ -34,7 +34,7 @@ const PlayerDetails: React.FC = () => {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      ${FONTS.h2}
+      ${FONTS.p}
     `,
     artist: css`
       margin: 0;
