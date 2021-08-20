@@ -1,7 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import { COLORS, FONTS } from 'assets/theme';
+import { MenuBulletIcon } from 'assets/icons/components';
+import { COLORS, FONTS, SIZES } from 'assets/theme';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedTrack } from 'store/action-creators';
@@ -18,8 +19,13 @@ const TrackCard: React.FC<Props> = ({ item }) => {
     dispatch(setSelectedTrack(item));
   };
 
+  const toggleMenu = () => console.log(item.uri);
+
   const styles = {
     container: css`
+      display: grid;
+      grid-template-columns: 90% 5%;
+      gap: 5%;
       overflow: hidden;
     `,
     button: css`
@@ -57,7 +63,16 @@ const TrackCard: React.FC<Props> = ({ item }) => {
       overflow: hidden;
       color: ${COLORS.blue};
       ${FONTS.p}
-    `
+    `,
+    menuButton: css`
+      background-color: transparent;
+      border: none;
+    `,
+    menuIcon: {
+      height: SIZES.iconSmall,
+      width: SIZES.iconSmall,
+      fill: COLORS.blue
+    }
   };
 
   return (
@@ -68,6 +83,9 @@ const TrackCard: React.FC<Props> = ({ item }) => {
           <p css={styles.title}>{item.name}</p>
           <p css={styles.artist}>{item.artist}</p>
         </div>
+      </button>
+      <button type="button" css={styles.menuButton} onClick={toggleMenu}>
+        <MenuBulletIcon {...styles.menuIcon} />
       </button>
     </li>
   );
