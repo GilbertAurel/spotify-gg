@@ -8,6 +8,8 @@ import React from 'react';
 const SearchHeader: React.FC = () => {
   const styles = {
     container: css`
+      position: sticky;
+      top: 0;
       display: grid;
       grid-template-rows: 3rem 5rem;
       box-shadow: 0px 2px 1px 1px rgba(0, 0, 255, 0.05);
