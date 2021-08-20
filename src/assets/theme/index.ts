@@ -35,5 +35,6 @@ export const FONTS = {
 };
 
 export const SIZES = {
-  icon: '24px'
+  icon: '24px',
+  iconSmall: '16px'
 };
