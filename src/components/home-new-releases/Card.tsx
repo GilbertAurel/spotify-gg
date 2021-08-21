@@ -43,6 +43,9 @@ const SongCard: React.FC<Props> = ({ track }) => {
       border-radius: 3px;
       object-fit: cover;
     `,
+    section: css`
+      width: 100%;
+    `,
     title: css`
       width: 100%;
       margin: 0;
@@ -68,7 +71,7 @@ const SongCard: React.FC<Props> = ({ track }) => {
   return (
     <button type="button" css={styles.container} onClick={selectTrackHandler}>
       <img css={styles.image} src={images[2].url} alt="" />
-      <section>
+      <section css={styles.section}>
         <p css={styles.title}>{name}</p>
         <p css={styles.artist}>{artist}</p>
       </section>
