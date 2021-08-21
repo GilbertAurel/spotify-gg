@@ -8,6 +8,7 @@ import Layout from 'layout/PageWithMusicPlayer';
 import TrackList from 'components/tracks-list';
 import TracksHeader from 'components/tracks-header';
 import usePlaylistTrack from 'utils/apis/usePlaylistTrack';
+import FullLoading from 'components/full-loading';
 
 const PlaylistPage: React.FC = () => {
   const { loaded, error } = usePlaylistTrack();
@@ -23,9 +24,9 @@ const PlaylistPage: React.FC = () => {
     `
   };
 
-  if (error) return <h1>Something went wrong...</h1>;
+  if (error) return <FullLoading message="something went wrong :(" error />;
 
-  if (!loaded) return <h1>Loading..</h1>;
+  if (!loaded) return <FullLoading message="loading tracks.." />;
 
   return (
     <Layout>

@@ -26,5 +26,10 @@ export const ROUTES: IRoutes[] = [
     path: '/search',
     exact: false,
     component: lazy(() => import('pages/search'))
+  },
+  {
+    path: '/account',
+    exact: false,
+    component: lazy(() => import('pages/account'))
   }
 ];

@@ -6,16 +6,15 @@ import {
   Redirect
 } from 'react-router-dom';
 import Login from 'pages/login';
+import FullLoading from 'components/full-loading';
 import PrivateRoute from './PrivateRoute';
 import { ROUTES } from './routes';
-
-const LoadingPlaceholder: React.FC = () => <div />;
 
 const index: React.FC = () => {
   const token = window.localStorage.getItem('token');
 
   return (
-    <Suspense fallback={<LoadingPlaceholder />}>
+    <Suspense fallback={<FullLoading message="" />}>
       <Router>
         <Switch>
           <Route

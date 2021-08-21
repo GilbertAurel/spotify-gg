@@ -42,7 +42,7 @@ const NewPlaylistForm: React.FC = () => {
 
       axios
         .post(CREATE_NEW_PLAYLIST_URL(user.id), newPlaylist, config)
-        .then((res) => history.push({ pathname: `/library/${res.data.id}` }));
+        .then(() => history.push({ pathname: `/home` }));
     }
   };
 

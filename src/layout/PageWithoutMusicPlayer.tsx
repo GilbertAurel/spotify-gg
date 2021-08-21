@@ -11,6 +11,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   const styles = {
     container: css`
+      min-height: 100vh;
       width: 100vw;
       display: grid;
 
