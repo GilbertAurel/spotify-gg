@@ -3,11 +3,13 @@
 import { css, jsx } from '@emotion/react';
 import { Vinyl } from 'assets/images';
 import { COLORS, FONTS } from 'assets/theme';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers';
 
 const TracksHeader: React.FC = () => {
+  const history = useHistory();
   const playlist = useSelector(
     (state: RootState) => state.playlist.selectedPlaylist
   );
@@ -15,6 +17,12 @@ const TracksHeader: React.FC = () => {
     playlist?.description.length < 50
       ? playlist?.description
       : `${playlist?.description.split('').splice(0, 50).join('')}..`;
+
+  useEffect(() => {
+    if (!playlist.name) {
+      history.push('/home');
+    }
+  }, []);
 
   const styles = {
     container: css`
