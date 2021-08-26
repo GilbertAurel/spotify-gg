@@ -29,6 +29,7 @@
         "prefer-destructuring": "off",
         "jsx-a11y/click-events-have-key-events": "off",
         "react/react-in-jsx-scope": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "no-console": "off"
     }
 }
