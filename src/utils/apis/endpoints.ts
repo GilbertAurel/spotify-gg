@@ -37,3 +37,6 @@ export const CREATE_NEW_PLAYLIST_URL = (id: string) =>
 
 export const ADD_TO_PLAYLIST_URL = (id: string) =>
   `https://api.spotify.com/v1/playlists/${id}/tracks`;
+
+export const REMOVE_FROM_PLAYLIST_URL = (id: string) =>
+  `https://api.spotify.com/v1/playlists/${id}/tracks`;

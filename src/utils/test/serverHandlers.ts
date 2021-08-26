@@ -15,9 +15,7 @@ const tracks = {
 };
 
 export const handlers = [
-  rest.get(SEARCH_URL, (req, res, ctx) => {
-    return res(ctx.json({ tracks }));
-  })
+  rest.get(SEARCH_URL, (req, res, ctx) => res(ctx.json({ tracks })))
 ];
 
 export const server = setupServer(...handlers);
