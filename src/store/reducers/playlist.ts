@@ -63,6 +63,11 @@ const playlistReducer = (state = initialState, action: Actions) => {
         ...state,
         tracks: action.payload
       };
+    case ActionTypes.ADD_PLAYLIST_TRACKS:
+      return {
+        ...state,
+        tracks: [...state.tracks, ...action.payload]
+      };
     case ActionTypes.SET_SELECTED_PLAYLIST:
       return {
         ...state,

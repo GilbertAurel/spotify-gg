@@ -71,3 +71,11 @@ export const setPlaylistTracks =
       payload: tracks
     });
   };
+
+export const addPlaylistTracks =
+  (tracks: Track[]) => (dispatch: DispatchType) => {
+    dispatch({
+      type: ActionTypes.ADD_PLAYLIST_TRACKS,
+      payload: tracks
+    });
+  };

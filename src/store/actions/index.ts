@@ -49,6 +49,11 @@ interface PlaylistTracksAction {
   payload: Track[];
 }
 
+interface AddPlaylistTracksAction {
+  type: ActionTypes.ADD_PLAYLIST_TRACKS;
+  payload: Track[];
+}
+
 export type Actions =
   | LoginAction
   | NewReleasesAction
@@ -58,4 +63,5 @@ export type Actions =
   | SelectedTrackAction
   | OpenTrackMenu
   | CloseTrackMenu
+  | AddPlaylistTracksAction
   | PlaylistTracksAction;
