@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Header from '../index';
 import * as redux from 'react-redux';
+import Header from '../index';
 
 const user = {
   images: [

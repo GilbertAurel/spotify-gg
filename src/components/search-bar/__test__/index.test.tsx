@@ -36,6 +36,6 @@ it('button click should redirect to other page', () => {
   const button = screen.getByTestId('submit-button');
   fireEvent.click(button);
 
-  expect(history.location.search).toBe(`?title=${searchMock}`);
+  expect(history.location.search).toBe(`title=${searchMock}`);
   expect(history.location.pathname).toBe('/search');
 });

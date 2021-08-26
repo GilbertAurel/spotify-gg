@@ -5,7 +5,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeTrackMenu, setSelectedTrack } from 'store/action-creators';
 import { RootState } from 'store/reducers';
-import { AddIcon, LogoutIcon, PlayIcon } from 'assets/icons/components';
+import {
+  AddIcon,
+  DeleteIcon,
+  PlayIcon,
+  ShareIcon
+} from 'assets/icons/components';
+import useDeleteTracks from 'utils/apis/useDeleteTrack';
 import MenuButton from './Button';
 import MenuDetails from './Details';
 import PlaylistList from './PlaylistList';
@@ -14,6 +20,7 @@ const PopUpMenu: React.FC = () => {
   const dispatch = useDispatch();
   const track = useSelector((state: RootState) => state.playlist.openMenu);
   const [togglePlaylists, setTogglePlaylists] = useState(false);
+  const { deleteTrack } = useDeleteTracks();
 
   const closeMenuHandler = () => dispatch(closeTrackMenu());
 
@@ -49,7 +56,7 @@ const PopUpMenu: React.FC = () => {
       color: transparent;
     `,
     innerContainer: css`
-      height: 60%;
+      height: 65%;
       width: 100%;
       display: grid;
       grid-auto-rows: 5rem;
@@ -74,7 +81,12 @@ const PopUpMenu: React.FC = () => {
             Icon={AddIcon}
             clickHandler={togglePlaylistHandler}
           />
-          <MenuButton label="Share" Icon={LogoutIcon} />
+          <MenuButton
+            label="Delete from playlist"
+            Icon={DeleteIcon}
+            clickHandler={deleteTrack}
+          />
+          <MenuButton label="Share" Icon={ShareIcon} />
         </div>
       ) : (
         <PlaylistList toggleHandler={togglePlaylistHandler} uri={track.uri} />
