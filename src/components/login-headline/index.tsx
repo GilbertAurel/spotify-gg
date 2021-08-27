@@ -8,7 +8,6 @@ import React from 'react';
 const LoginHeadline: React.FC = () => {
   const styles = {
     container: css`
-      grid-row: 6/10;
       display: flex;
       flex-direction: column;
       gap: 1rem;

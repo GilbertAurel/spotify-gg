@@ -29,13 +29,18 @@ const LoginPage: React.FC = () => {
       min-height: 100vh;
       padding: 0 10%;
       position: relative;
-      display: grid;
-      grid-auto-rows: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5rem;
     `,
     whiteShader: css`
       height: 100%;
       width: 100%;
       position: absolute;
+      top: 0;
+      left: 0;
       background: linear-gradient(transparent, rgba(255, 255, 255, 1) 70%);
       z-index: -1;
     `,
@@ -43,14 +48,14 @@ const LoginPage: React.FC = () => {
       height: 100%;
       width: 100%;
       position: absolute;
+      top: 0;
+      left: 0;
       object-fit: cover;
       z-index: -2;
     `,
     loginButton: css`
-      position: absolute;
-      bottom: 5rem;
+      margin-bottom: 5rem;
       padding: 0.5rem 3rem;
-      justify-self: center;
       background-color: ${COLORS.spotifyGreen};
       border: none;
       border-radius: 2rem;
