@@ -11,12 +11,6 @@ This project is developed as one of project requirements in GenerasiGIGIH progra
 - Linter: ESLint Airbnb style
 - Deployment: Vercel
 
-## Problems encountered:
-
-- Limited time to create both web and mobile design
-- Typescript makes everything a little bit slower compared to JS
-- Spotify uses large size images that make the app slow
-
 ## Features:
 
 - All required features
